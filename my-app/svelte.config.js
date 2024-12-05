@@ -17,14 +17,8 @@ import adapter from '@sveltejs/adapter-node';
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
   kit: {
-    adapter: adapter(),
-    paths: {
-      base: '', // Si estás desplegando en la raíz
-    },
-    prerender: {
-      default: false, // Cambia a `true` si deseas habilitar prerenderización
-    },
-  },
+    adapter: adapter()
+  }
 };
 
 export default config;
