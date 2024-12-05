@@ -11,4 +11,4 @@ services:
     startCommand: "npm run preview"
     envVars:
       - key: NODE_ENV
-        value: "production"
+        value: "18.13.0"
