@@ -3,7 +3,11 @@ services:
   - type: web
     name: my-svelte-app
     env: node
-    buildCommand: "npm install && npm run build"
+    buildCommand: |
+      echo "Instalando dependencias..."
+      npm install
+      echo "Construyendo la aplicación..."
+      npm run build
     startCommand: "npm run preview"
     envVars:
       - key: NODE_ENV
