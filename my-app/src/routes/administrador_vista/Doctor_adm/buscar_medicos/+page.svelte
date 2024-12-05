@@ -1,6 +1,6 @@
 <script>
     import Navbaradmi from "$lib/Navbaradmin.svelte";
-    import { onMount } from "Svelte";
+    import { onMount } from "svelte";
 
     let todos = {};
     let todos2 = {};
