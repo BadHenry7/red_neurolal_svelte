@@ -10,15 +10,17 @@
 	}
 };
 
-export default config;
-*/
 import adapter from '@sveltejs/adapter-node';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-  kit: {
-    adapter: adapter()
-  }
-};
-
-export default config;
+	kit: {
+	  adapter: adapter(),
+	  paths: {
+		base: '', // Si estás desplegando en la raíz, asegúrate de no tener una base URL configurada.
+	  }
+	}
+  };
+  
+  export default config;
+  
