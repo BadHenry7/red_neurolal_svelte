@@ -1,6 +1,6 @@
 
 ---->Para Ver la api
-http://127.0.0.1:8000/docs
+https://red-neuronal-api.onrender.com/docs
 
 
 ---->Para el uso de la api, necesitaremos hacer:
