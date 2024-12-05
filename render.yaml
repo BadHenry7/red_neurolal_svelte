@@ -10,5 +10,5 @@ services:
       npm run build
     startCommand: "npm run preview"
     envVars:
-      - key: NODE_ENV
+      - key: NODE_VERSION
         value: "20.17.0"

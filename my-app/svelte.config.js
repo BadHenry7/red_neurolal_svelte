@@ -19,10 +19,10 @@ const config = {
   kit: {
     adapter: adapter(),
     paths: {
-      base: '', // Sin base URL si está en la raíz
+      base: '', // Si estás desplegando en la raíz
     },
     prerender: {
-      enabled: false, // Si no necesitas prerenderización
+      default: false, // Cambia a `true` si deseas habilitar prerenderización
     },
   },
 };
