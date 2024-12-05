@@ -10,17 +10,18 @@
 	}
 };
 
-import adapter from '@sveltejs/adapter-node';
+export default config;
+*/
+import adapter from '@sveltejs/adapter-node'; // Asegúrate de importar correctamente el adaptador
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	kit: {
-	  adapter: adapter(),
-	  paths: {
-		base: '', // Si estás desplegando en la raíz, asegúrate de no tener una base URL configurada.
-	  }
-	}
-  };
-  
-  export default config;
-  
+  kit: {
+    adapter: adapter(), // Usando el adaptador de Node.js
+    paths: {
+      base: '', // Si estás desplegando en la raíz, asegúrate de no tener una base URL configurada
+    },
+  }
+};
+
+export default config;
