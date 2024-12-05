@@ -17,12 +17,12 @@ import adapter from '@sveltejs/adapter-node';
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
   kit: {
-    adapter: adapter(), // Usando el adaptador de Node.js
+    adapter: adapter(),
     paths: {
-      base: '', // Si estás desplegando en la raíz, asegúrate de no tener una base URL configurada.
+      base: '', // Sin base URL si está en la raíz
     },
     prerender: {
-      enabled: true, // Habilita la prerenderización para todas las páginas
+      enabled: false, // Si no necesitas prerenderización
     },
   },
 };
