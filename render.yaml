@@ -8,3 +8,11 @@ services:
     envVars:
       - key: MY_ENV_VAR
         value: "value_here"
+  - type: web
+    name: my-svelte-app
+    env: node
+    buildCommand: "npm install && npm run build"
+    startCommand: "npm run preview"
+    envVars:
+      - key: NODE_ENV
+        value: "production"
