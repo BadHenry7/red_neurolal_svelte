@@ -22,9 +22,9 @@ const config = {
       base: '', // Si estás desplegando en la raíz, asegúrate de no tener una base URL configurada.
     },
     prerender: {
-      default: true, // Si es necesario, habilita la prerenderización.
+      enabled: true, // Habilita la prerenderización para todas las páginas
     },
-  }
+  },
 };
 
 export default config;
