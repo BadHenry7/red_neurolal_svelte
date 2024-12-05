@@ -12,16 +12,11 @@
 
 export default config;
 */
-import adapter from '@sveltejs/adapter-node'; // Asegúrate de importar correctamente el adaptador
+import adapter from '@sveltejs/adapter-node';
 
-/** @type {import('@sveltejs/kit').Config} */
-const config = {
+export default {
   kit: {
-    adapter: adapter(), // Usando el adaptador de Node.js
-    paths: {
-      base: '', // Si estás desplegando en la raíz, asegúrate de no tener una base URL configurada
-    },
+    // other config options
+    adapter: adapter(),  // Agrega el adaptador para Node.js
   }
 };
-
-export default config;
