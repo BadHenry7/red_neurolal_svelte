@@ -20,7 +20,7 @@
         try {
             if (opcion == 1) {
                 const response = await fetch(
-                    "https://red-neuronal-api.onrender.com/historia_clinica_user",
+                    "http://127.0.0.1:8000/historia_clinica_user",
                     {
                         method: "POST",
                         headers: {
@@ -134,7 +134,7 @@
 
             } else if (opcion == 2) {
                 const response = await fetch(
-                    "https://red-neuronal-api.onrender.com/post_citas_users/",
+                    "http://127.0.0.1:8000/post_citas_users/",
                     {
                         method: "POST",
                         headers: {

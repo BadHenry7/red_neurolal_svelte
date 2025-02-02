@@ -1,7 +1,8 @@
 <script>
-    import Footer from "../../lib/Footer.svelte";
+ import Navbaradmin from "$lib/Navbar.svelte";
+
+    import Footer from "../../../../lib/Footer.svelte";
     import { onMount } from "svelte";
-  
 
     let todos = {};
     let loading = true;
@@ -12,7 +13,7 @@
     let v_apellido = ""; //por que mano anda mucha gente aca haciendo bulla entonces no puedo entrar a teams
     let v_documento = "";
     let v_telefono = "";
-    let v_rol = 2;
+    let v_rol = 3;
     let v_estado = 1;
 
     onMount(async () => {
@@ -27,22 +28,23 @@
         }
     });
 
-    const serviceID = 'service_acpug5r'
-    const templateID = 'template_0hvvaww'
-    const apikey = '3bmpPn1S0SLhgotWj'
+    const serviceID = "service_acpug5r";
+    const templateID = "template_0hvvaww";
+    const apikey = "3bmpPn1S0SLhgotWj";
 
     function sendEmail() {
-        emailjs.init(apikey); 
-        emailjs.send(serviceID, templateID, {
-            nombre: v_nombre,
-            email: v_usuario, 
-        })
-        .then(result => {
-            alert('Correo enviado con éxito!');
-        })
-        .catch(error => {
-            console.log('Error al enviar el correo:', error.text);
-        });
+        emailjs.init(apikey);
+        emailjs
+            .send(serviceID, templateID, {
+                nombre: v_nombre,
+                email: v_usuario,
+            })
+            .then((result) => {
+                alert("Correo enviado con éxito!");
+            })
+            .catch((error) => {
+                console.log("Error al enviar el correo:", error.text);
+            });
     }
 
     async function Register() {
@@ -64,19 +66,55 @@
                 }),
             });
 
-            const data = await response.json();
-            console.log(data);
-            console.log(data.Informacion);
+            const data = await response.json(); 
 
+            let id_atributo_v=1
+            let estado_v=1
+
+            console.log(data);
+            todos= data
+            console.log(todos);
+            
+            let v_id=todos[0];
+            console.log("----Este es el v_id")
+
+            console.log(v_id)
+            let v_especialidad= document.getElementById("especialidad").value;
+            console.log("Este es el valor que tiene v_esoecialidad")
+            console.log(v_especialidad)
             if (data.Informacion != "Ya_existe") {
-                alert("Usuario registrado");
+                const response = await fetch("http://127.0.0.1:8000/create_atributoxusuario", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    valor: v_especialidad,
+                    descripcion: v_especialidad,
+                    id_usuario: v_id,
+                    id_atributo: id_atributo_v,
+                    estado: estado_v
+                }),
+            });
+
+
+
+
+
+
+
+            Swal.fire({
+                    title: "Registrado!",
+                    text: "Usuario ha sido registrado",
+                    icon: "success",
+                });
                 document.getElementById("nombre").value = "";
                 document.getElementById("apellido").value = "";
                 document.getElementById("documento").value = "";
                 document.getElementById("telefono").value = "";
                 document.getElementById("usuario").value = "";
                 document.getElementById("password").value = "";
-                sendEmail()
+                //sendEmail()
             } else {
                 alert("Usuario ya registrado");
             }
@@ -87,18 +125,22 @@
     }
 </script>
 
+<Navbadmin></Navbadmin>
 <div class="container pt-3">
-    <div class="text-center fs-1"><b> REGISTRO USUARIO </b></div>
-    <div class="mb-5 px-2">
-        <a href="/" class="btn btn-outline-info">Volver</a>
-    </div>
+    <div class="text-center fs-1"><b> 🚑Registro de medico 🚑</b></div>
+
     <!--<div class="text-end fs-3  text-a-secondary ">
         ¿Ya tienes una cuenta?<a href="/Login" class="text-secondary">Click aqui</a>
     </div>
     
     <border ; rounded-pill; para redondearlo-->
 
-    <form name="formulario" id="formulario" class="container" on:submit={Register}>
+    <form
+        name="formulario"
+        id="formulario"
+        class="container"
+        on:submit={Register}
+    >
         <div class="container py-5 ps-4 px-5 mt-5 border border-info">
             <!-- border-danger -->
             <div class="row mt-5 mx-5">
@@ -185,22 +227,36 @@
                     />
                 </div>
             </div>
-
             <div class="row mt-4 mx-5">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-12 col-xl-6">
+                    <label for="">Ocupacion</label>
+                    <select
+                        name=""
+                        id="especialidad"
+                        placeholder=" Especialidad?"
+                        class="form-control rounded-pill"
+                    >
+                        <option value="Medicina general">Medicina general</option>
+                        <option value="Enfermero">Enfermero</option>
+                        <option value="Especialista">Especialista</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mt-3 mx-5">
                 <div class="row mt-4 mx-5">
                     <div
-                        class="col-lg-6 col-md-6 col-sm-6 col-12 col-xl-6 py-2"
+                        class="col-lg-5 col-md-5 col-sm-5 col-12 col-xl-5 py-2"
                     >
-                        <input type="checkbox" id="terminos" required />
+                        <!--<input type="checkbox" id="terminos" required />
                         <label
-                            ><button class="btn btn-link p-0"
+                            ><a
                                 href="#"
                                 data-bs-toggle="modal"
                                 data-bs-target="#TerminosCondiciones"
                             >
-                                Acepto los términos y condiciones</button
+                                Acepto los términos y condiciones</a
                             ></label
-                        >
+                        >-->
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-12 col-xl-6">
                         <input
@@ -212,13 +268,12 @@
                 </div>
             </div>
         </div>
-
     </form>
 
     <div><br /></div>
 </div>
 
-<div
+<!--<div
     class="modal fade"
     id="TerminosCondiciones"
     tabindex="-1"
@@ -319,6 +374,5 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
 
-<Footer></Footer>

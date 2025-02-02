@@ -13,7 +13,7 @@
     /*
     onMount(async () => {
         try {
-            const response = await fetch("https://red-neuronal-api.onrender.com/login");
+            const response = await fetch("http://127.0.0.1:8000/login");
             if (!response.ok) throw new Error("Error al cargar los datos");
             todos = await response.json();
         } catch (e) {
@@ -34,7 +34,7 @@
     });
 
     async function token() {
-        const response = await fetch("https://red-neuronal-api.onrender.com/generate_token", {
+        const response = await fetch("http://127.0.0.1:8000/generate_token", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -56,7 +56,7 @@
         console.log(todos2);
         loading = true;
         try {
-            const response = await fetch("https://red-neuronal-api.onrender.com/login", {
+            const response = await fetch("http://127.0.0.1:8000/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -75,13 +75,17 @@
                 console.log(rol_v);
 
                 console.log(todos);
+                
                 //return {"access_token": access_token}
+
+    
+
                 if (rol_v == 1) {
                     let name = data.resultado[0].nombre;
                     let id = data.resultado[0].id;
                     let correo = data.resultado[0].usuario;
 
-                    let encontrado = { name, id, correo, todos2 };
+                    let encontrado = { name, id, correo, todos2, rol_v };
                     console.log("Imprimos el encontrado", encontrado);
                     let miStorage = window.localStorage;
                     miStorage.setItem("usuario", JSON.stringify(encontrado));
@@ -97,12 +101,13 @@
                     setTimeout(() => {
                     window.location.href = "/administrador_vista";
                     }, 2000);
+                    
                 } else if (rol_v == 2) {
                     let name = data.resultado[0].nombre;
                     let id = data.resultado[0].id;
                     let correo = data.resultado[0].usuario;
 
-                    let encontrado = { name, id, correo, todos2 };
+                    let encontrado = { name, id, correo, todos2, rol_v };
                     console.log("Imprimos el encontrado", encontrado);
                     let miStorage = window.localStorage;
                     miStorage.setItem("usuario", JSON.stringify(encontrado));
@@ -120,12 +125,12 @@
                     setTimeout(() => {
                         window.location.href = "/usuario";
                     }, 2000);
-                } else {
+                } else if (rol_v==3) {
                     let name = data.resultado[0].nombre;
                     let id = data.resultado[0].id;
                     let correo = data.resultado[0].usuario;
 
-                    let encontrado = { name, id, correo, todos2 };
+                    let encontrado = { name, id, correo, todos2, rol_v };
                     console.log("Imprimos el encontrado", encontrado);
                     let miStorage = window.localStorage;
                     miStorage.setItem("usuario", JSON.stringify(encontrado));
@@ -142,6 +147,33 @@
 
                     setTimeout(() => {
                         window.location.href = "/medico_vista";
+                        
+
+                    }, 2000);
+                }else{
+                    let name = data.resultado[0].nombre;
+                    let id = data.resultado[0].id;
+                    let correo = data.resultado[0].usuario;
+
+                    let encontrado = { name, id, correo, todos2, rol_v };
+                    console.log("Imprimos el encontrado", encontrado);
+                    let miStorage = window.localStorage;
+                    miStorage.setItem("usuario", JSON.stringify(encontrado));
+
+                    //  alert(                        "Inicio de sesion exitoso2. Bienvenido Usuario " + name,);
+                    //document.getElementById("loginex").style.display = "flex";
+                    Swal.fire({
+                        //Popup window position, can be 'top', 'top-start', 'top-end', 'center', 'center-start', 'center-end', 'bottom', 'bottom-start', or 'bottom-end'.
+                        position: "top",
+                        icon: "success",
+                        title: "Inicio de sesion exitoso, bienvenido " + name,
+                        showConfirmButton: false,
+                    });
+
+                    setTimeout(() => {
+                        //window.location.href = "/medico_vista";
+                        window.location.href = "/vista_main";
+
                     }, 2000);
                 }
             } else {
@@ -332,3 +364,80 @@
         }
     }
 </style>
+
+
+
+
+
+
+
+
+
+<!--if (rol_v == 18) {
+    let name = data.resultado[0].nombre;
+    let id = data.resultado[0].id;
+    let correo = data.resultado[0].usuario;
+
+    let encontrado = { name, id, correo, todos2, rol_v };
+    console.log("Imprimos el encontrado", encontrado);
+    let miStorage = window.localStorage;
+    miStorage.setItem("usuario", JSON.stringify(encontrado));
+    //alert("Inicio de sesion exitoso. Bienvenido  Administrador " +  name,);
+    Swal.fire({
+        //Popup window position, can be 'top', 'top-start', 'top-end', 'center', 'center-start', 'center-end', 'bottom', 'bottom-start', or 'bottom-end'.
+        position: "top",
+        icon: "success",
+        title: "Inicio de sesion exitoso, bienvenido " + name,
+        showConfirmButton: false,
+    });
+
+    setTimeout(() => {
+    window.location.href = "/administrador_vista";
+    }, 2000);
+} else if (rol_v == 2) {
+    let name = data.resultado[0].nombre;
+    let id = data.resultado[0].id;
+    let correo = data.resultado[0].usuario;
+
+    let encontrado = { name, id, correo, todos2, rol_v };
+    console.log("Imprimos el encontrado", encontrado);
+    let miStorage = window.localStorage;
+    miStorage.setItem("usuario", JSON.stringify(encontrado));
+
+    //  alert(                        "Inicio de sesion exitoso2. Bienvenido Usuario " + name,);
+    //document.getElementById("loginex").style.display = "flex";
+    Swal.fire({
+        //Popup window position, can be 'top', 'top-start', 'top-end', 'center', 'center-start', 'center-end', 'bottom', 'bottom-start', or 'bottom-end'.
+        position: "top",
+        icon: "success",
+        title: "Inicio de sesion exitoso, bienvenido " + name,
+        showConfirmButton: false,
+    });
+
+    setTimeout(() => {
+        window.location.href = "/usuario";
+    }, 2000);
+} else {
+    let name = data.resultado[0].nombre;
+    let id = data.resultado[0].id;
+    let correo = data.resultado[0].usuario;
+
+    let encontrado = { name, id, correo, todos2 };
+    console.log("Imprimos el encontrado", encontrado);
+    let miStorage = window.localStorage;
+    miStorage.setItem("usuario", JSON.stringify(encontrado));
+
+    //  alert(                        "Inicio de sesion exitoso2. Bienvenido Usuario " + name,);
+    //document.getElementById("loginex").style.display = "flex";
+    Swal.fire({
+        //Popup window position, can be 'top', 'top-start', 'top-end', 'center', 'center-start', 'center-end', 'bottom', 'bottom-start', or 'bottom-end'.
+        position: "top",
+        icon: "success",
+        title: "Inicio de sesion exitoso, bienvenido " + name,
+        showConfirmButton: false,
+    });
+
+    setTimeout(() => {
+        window.location.href = "/medico_vista";
+    }, 2000);
+}-->

@@ -15,7 +15,7 @@
             console.log("agendamos cita");
             console.log(n);
 
-            const response = await fetch("https://red-neuronal-api.onrender.com/post_citas_users/", {
+            const response = await fetch("http://127.0.0.1:8000/post_citas_users/", {
                 
                 method: "POST",
                 headers: {

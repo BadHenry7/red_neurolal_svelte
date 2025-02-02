@@ -1,6 +1,7 @@
 <script>
     // MONTHNAME() PARA DEVOLVER EL NOMBRE DEL MES  y yearname el año
-    import Navbaradmin from "../../../lib/Navbaradmin.svelte";
+    import Navbaradmin from "$lib/Navbar.svelte";
+
     import { onMount } from "svelte";
 
     let todos = {};

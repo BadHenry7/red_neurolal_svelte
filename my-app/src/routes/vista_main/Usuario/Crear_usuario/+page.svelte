@@ -1,7 +1,8 @@
 <script>
-    import Footer from "../../lib/Footer.svelte";
+   import Navbaradmin from "$lib/Navbar.svelte";
+
+
     import { onMount } from "svelte";
-  
 
     let todos = {};
     let loading = true;
@@ -9,7 +10,7 @@
     let v_usuario = "";
     let v_password = "";
     let v_nombre = "";
-    let v_apellido = ""; //por que mano anda mucha gente aca haciendo bulla entonces no puedo entrar a teams
+    let v_apellido = "";
     let v_documento = "";
     let v_telefono = "";
     let v_rol = 2;
@@ -26,22 +27,22 @@
             loading = false;
         }
     });
+ 
+    function Confirmacion() {
+        Swal.fire({
+            title: "¿Estas seguro de registrar este usuario?",
+            text: "¡tu no podras revertir esto!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "¡si, registralo!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+               
 
-    const serviceID = 'service_acpug5r'
-    const templateID = 'template_0hvvaww'
-    const apikey = '3bmpPn1S0SLhgotWj'
-
-    function sendEmail() {
-        emailjs.init(apikey); 
-        emailjs.send(serviceID, templateID, {
-            nombre: v_nombre,
-            email: v_usuario, 
-        })
-        .then(result => {
-            alert('Correo enviado con éxito!');
-        })
-        .catch(error => {
-            console.log('Error al enviar el correo:', error.text);
+                Register();
+            }
         });
     }
 
@@ -69,16 +70,23 @@
             console.log(data.Informacion);
 
             if (data.Informacion != "Ya_existe") {
-                alert("Usuario registrado");
+                Swal.fire({
+                    title: "Registrado!",
+                    text: "Usuario ha sido registrado",
+                    icon: "success",
+                });
                 document.getElementById("nombre").value = "";
                 document.getElementById("apellido").value = "";
                 document.getElementById("documento").value = "";
                 document.getElementById("telefono").value = "";
                 document.getElementById("usuario").value = "";
                 document.getElementById("password").value = "";
-                sendEmail()
             } else {
-                alert("Usuario ya registrado");
+                Swal.fire({
+                    title: "Error",
+                    text: "Usuario ya se encuentra registrado",
+                    icon: "error",
+                });
             }
         } catch (e) {
             error = e.message;
@@ -87,18 +95,22 @@
     }
 </script>
 
-<div class="container pt-3">
-    <div class="text-center fs-1"><b> REGISTRO USUARIO </b></div>
-    <div class="mb-5 px-2">
-        <a href="/" class="btn btn-outline-info">Volver</a>
-    </div>
-    <!--<div class="text-end fs-3  text-a-secondary ">
-        ¿Ya tienes una cuenta?<a href="/Login" class="text-secondary">Click aqui</a>
-    </div>
-    
-    <border ; rounded-pill; para redondearlo-->
+<Navbaradmin></Navbaradmin>
 
-    <form name="formulario" id="formulario" class="container" on:submit={Register}>
+<div class="container pt-3">
+    <div class="text-center fs-1"><b> Hostipal🚑</b></div>
+    <!--<div class="text-end fs-3  text-a-secondary ">
+            ¿Ya tienes una cuenta?<a href="/Login" class="text-secondary">Click aqui</a>
+        </div>
+        
+        <border ; rounded-pill; para redondearlo-->
+
+    <form
+        name="formulario"
+        id="formulario"
+        class="container"
+        on:submit={Confirmacion}
+    >
         <div class="container py-5 ps-4 px-5 mt-5 border border-info">
             <!-- border-danger -->
             <div class="row mt-5 mx-5">
@@ -190,32 +202,18 @@
                 <div class="row mt-4 mx-5">
                     <div
                         class="col-lg-6 col-md-6 col-sm-6 col-12 col-xl-6 py-2"
-                    >
-                        <input type="checkbox" id="terminos" required />
-                        <label
-                            ><button class="btn btn-link p-0"
-                                href="#"
-                                data-bs-toggle="modal"
-                                data-bs-target="#TerminosCondiciones"
-                            >
-                                Acepto los términos y condiciones</button
-                            ></label
-                        >
-                    </div>
+                    ></div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-12 col-xl-6">
                         <input
                             type="submit"
-                            value="Enviar"
+                            value="Enviar "
                             class="btn text-black btn-info rounded-pill"
                         />
                     </div>
                 </div>
             </div>
         </div>
-
     </form>
-
-    <div><br /></div>
 </div>
 
 <div
@@ -320,5 +318,3 @@
         </div>
     </div>
 </div>
-
-<Footer></Footer>

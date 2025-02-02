@@ -6,7 +6,7 @@
     onMount(async () => {
         try {
             const response = await fetch(
-                "https://red-neuronal-api.onrender.com/get_cita_admin/",
+                "http://127.0.0.1:8000/get_cita_admin/",
                 {
                     method: "GET",
                 },
@@ -32,7 +32,7 @@
             document.getElementById("buscardocument_v").value;
         console.log("documento a buscar: ", buscardocument_v);
         const response = await fetch(
-            "https://red-neuronal-api.onrender.com/get_user_document",
+            "http://127.0.0.1:8000/get_user_document",
             {
                 method: "POST",
                 headers: {
@@ -60,7 +60,7 @@
         }, 0);
         try {
             const response = await fetch(
-                "https://red-neuronal-api.onrender.com/historia_clinica",
+                "http://127.0.0.1:8000/historia_clinica",
                 {
                     method: "POST",
                     headers: {
@@ -133,7 +133,7 @@
         try {
             let id_cita_v=document.getElementById('citas').value;
             console.log("id de la cita", id_cita_v)
-            const response = await fetch("https://red-neuronal-api.onrender.com/create_sintomas", {
+            const response = await fetch("http://127.0.0.1:8000/create_sintomas", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -161,7 +161,7 @@
             
             
 
-            const response = await fetch("https://red-neuronal-api.onrender.com/create_diagnosticos", {
+            const response = await fetch("http://127.0.0.1:8000/create_diagnosticos", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
