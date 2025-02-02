@@ -15,7 +15,7 @@
 
         try {
             console.log("entra al try");
-            const response = await fetch("http://127.0.0.1:8000/get_user", {
+            const response = await fetch("https://red-neuronal-api.onrender.com/get_user", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -82,7 +82,7 @@
         let  v_documento =document.getElementById("documento").value;
         let v_telefono  =document.getElementById("telefono").value;
         console.log(v_password)
-        const response = await fetch("http://127.0.0.1:8000/update_adm", {
+        const response = await fetch("https://red-neuronal-api.onrender.com/update_adm", {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",

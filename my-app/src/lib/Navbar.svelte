@@ -42,7 +42,7 @@
         let v_id_rol=usuario.rol_v
         console.log("idddd", v_id_rol)
         try {
-          const response = await fetch("http://127.0.0.1:8000/get_modulos_asignado",{
+          const response = await fetch("https://red-neuronal-api.onrender.com/get_modulos_asignado",{
       method: "POST",
       headers: {
         "Content-Type": "application/json", },

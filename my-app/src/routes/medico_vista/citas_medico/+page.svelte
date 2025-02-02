@@ -16,7 +16,7 @@
             console.log(n);
 
             const response = await fetch(
-                "http://127.0.0.1:8000/post_citas_doctor",
+                "https://red-neuronal-api.onrender.com/post_citas_doctor",
                 {
                     method: "POST",
                     headers: {
@@ -47,7 +47,7 @@
     async function cita_realizada(id) {
         let v_id = id;
 
-        const response = await fetch("http://127.0.0.1:8000/eliminar_cita", {
+        const response = await fetch("https://red-neuronal-api.onrender.com/eliminar_cita", {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

@@ -9,9 +9,9 @@
     var v_id = 1;
     onMount(async () => {
         try {
-            const response = await fetch("http://127.0.0.1:8000/get_medicos");
+            const response = await fetch("https://red-neuronal-api.onrender.com/get_medicos");
             const result = await fetch(
-                "http://127.0.0.1:8000/get_atributoxusuarios",
+                "https://red-neuronal-api.onrender.com/get_atributoxusuarios",
             );
             if (response) {
                 const data = await response.json();
@@ -60,7 +60,7 @@
         cambiar.insertBefore(v_editar, ocultar);
 
         try {
-            const response = await fetch("http://127.0.0.1:8000/get_user", {
+            const response = await fetch("https://red-neuronal-api.onrender.com/get_user", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -72,7 +72,7 @@
 
             if (response) {
                 const result = await fetch(
-                    "http://127.0.0.1:8000/get_atributoxusuario",
+                    "https://red-neuronal-api.onrender.com/get_atributoxusuario",
                     {
                         method: "POST",
                         headers: {
@@ -110,7 +110,7 @@
         v_id = id;
 
         try {
-            const response = await fetch("http://127.0.0.1:8000/estado_user", {
+            const response = await fetch("https://red-neuronal-api.onrender.com/estado_user", {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -158,7 +158,7 @@
         v_id = id;
 
         try {
-            const response = await fetch("http://127.0.0.1:8000/estado_user", {
+            const response = await fetch("https://red-neuronal-api.onrender.com/estado_user", {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -212,7 +212,7 @@
             console.log("Entra al try de actualzar");
 
             const response = await fetch(
-                "http://127.0.0.1:8000/actualizaruser",
+                "https://red-neuronal-api.onrender.com/actualizaruser",
                 {
                     method: "PUT",
                     headers: {
@@ -235,7 +235,7 @@
                 console.log("entra al update atributoxusuario")
                 console.log(vespecialidad)
                 const result = await fetch(
-                    "http://127.0.0.1:8000/updateatributoxusuario",
+                    "https://red-neuronal-api.onrender.com/updateatributoxusuario",
                     {
                         method: "PUT",
                         headers: {
