@@ -1,7 +1,7 @@
 <script>
    import Navbaradmin from "$lib/Navbar.svelte";
 
-    import { onMount } from "svelte";
+    import { onMount } from "Svelte";
 
     let todos = {};
     let todos2 = {};
@@ -10,9 +10,9 @@
     var v_id = 1;
     onMount(async () => {
         try {
-            const response = await fetch("https://red-neuronal-api.onrender.com/get_medicos");
+            const response = await fetch("http://127.0.0.1:8000/get_medicos");
             const result = await fetch(
-                "https://red-neuronal-api.onrender.com/get_atributoxusuarios",
+                "http://127.0.0.1:8000/get_atributoxusuarios",
             );
             if (response) {
                 const data = await response.json();
@@ -61,7 +61,7 @@
         cambiar.insertBefore(v_editar, ocultar);
 
         try {
-            const response = await fetch("https://red-neuronal-api.onrender.com/get_user", {
+            const response = await fetch("http://127.0.0.1:8000/get_user", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -73,7 +73,7 @@
 
             if (response) {
                 const result = await fetch(
-                    "https://red-neuronal-api.onrender.com/get_atributoxusuario",
+                    "http://127.0.0.1:8000/get_atributoxusuario",
                     {
                         method: "POST",
                         headers: {
@@ -111,7 +111,7 @@
         v_id = id;
 
         try {
-            const response = await fetch("https://red-neuronal-api.onrender.com/estado_user", {
+            const response = await fetch("http://127.0.0.1:8000/estado_user", {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -159,7 +159,7 @@
         v_id = id;
 
         try {
-            const response = await fetch("https://red-neuronal-api.onrender.com/estado_user", {
+            const response = await fetch("http://127.0.0.1:8000/estado_user", {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -213,7 +213,7 @@
             console.log("Entra al try de actualzar");
 
             const response = await fetch(
-                "https://red-neuronal-api.onrender.com/actualizaruser",
+                "http://127.0.0.1:8000/actualizaruser",
                 {
                     method: "PUT",
                     headers: {
@@ -236,7 +236,7 @@
                 console.log("entra al update atributoxusuario")
                 console.log(vespecialidad)
                 const result = await fetch(
-                    "https://red-neuronal-api.onrender.com/updateatributoxusuario",
+                    "http://127.0.0.1:8000/updateatributoxusuario",
                     {
                         method: "PUT",
                         headers: {
@@ -293,7 +293,7 @@
     }
 </script>
 
-<Navbaradmi></Navbaradmi>
+<Navbaradmin></Navbaradmin>
 
 <div id="Mostrardoctores">
     <div class="container py-4">
