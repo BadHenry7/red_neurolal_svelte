@@ -19,7 +19,7 @@
         try {
             console.log;
             const response = await fetch(
-                "http://127.0.0.1:8000/estadisticas_citas",
+                "https://red-neuronal-api.onrender.com/estadisticas_citas",
             );
             if (!response.ok) throw new Error("Error al cargar los datos");
             const data = await response.json();
@@ -110,7 +110,7 @@
             try {
                 console.log;
                 const response = await fetch(
-                    "http://127.0.0.1:8000/estadisticas2_citas",
+                    "https://red-neuronal-api.onrender.com/estadisticas2_citas",
                 );
                 if (!response.ok) throw new Error("Error al cargar los datos");
                 const data = await response.json();
@@ -183,7 +183,7 @@
             try {
                 console.log;
                 const response = await fetch(
-                    "http://127.0.0.1:8000/estadisticas3_citas",
+                    "https://red-neuronal-api.onrender.com/estadisticas3_citas",
                 );
                 if (!response.ok) throw new Error("Error al cargar los datos");
                 const data = await response.json();
@@ -256,7 +256,7 @@
             try {
                 console.log;
                 const response = await fetch(
-                    "http://127.0.0.1:8000/estadisticas4_citas",
+                    "https://red-neuronal-api.onrender.com/estadisticas4_citas",
                 );
                 if (!response.ok) throw new Error("Error al cargar los datos");
                 const data = await response.json();
@@ -342,7 +342,7 @@
             try {
                 console.log;
                 const response = await fetch(
-                    "http://127.0.0.1:8000/estadisticas_citas_activas",
+                    "https://red-neuronal-api.onrender.com/estadisticas_citas_activas",
                 );
                 if (!response.ok) throw new Error("Error al cargar los datos");
                 const data = await response.json();
@@ -415,7 +415,7 @@
             try {
                 console.log;
                 const response = await fetch(
-                    "http://127.0.0.1:8000/estadisticas_citas_desactivado",
+                    "https://red-neuronal-api.onrender.com/estadisticas_citas_desactivado",
                 );
                 if (!response.ok) throw new Error("Error al cargar los datos");
                 const data = await response.json();
@@ -511,7 +511,7 @@
         try {
             console.log;
             const response = await fetch(
-                "http://127.0.0.1:8000/estadisticas_avg_citas",
+                "https://red-neuronal-api.onrender.com/estadisticas_avg_citas",
                 {
                     method: "POST",
                     headers: {
