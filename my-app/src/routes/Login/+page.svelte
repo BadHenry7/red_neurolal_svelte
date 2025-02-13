@@ -277,7 +277,7 @@
                 />
             </div>
     <form id="login-form">
-        <div class="g-recaptcha" style="padding-left: 23%;" data-sitekey="6LfX9Y0qAAAAAJokSDZBGURI5WOwQfIJUbGpDNCy"></div>
+        <div class="g-recaptcha" style="padding-left: 23%;" data-sitekey="6LdletYqAAAAAN1Insg4lQuDyDO8zO834KBO6nvs"></div>
         
     </form>
 
