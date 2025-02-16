@@ -13,7 +13,7 @@
     /*
     onMount(async () => {
         try {
-            const response = await fetch("http://127.0.0.1:8000/login");
+            const response = await fetch("https://red-neuronal-api.onrender.com/login");
             if (!response.ok) throw new Error("Error al cargar los datos");
             todos = await response.json();
         } catch (e) {
@@ -55,7 +55,7 @@
       
 
 
-            const response = await fetch("http://127.0.0.1:8000/generate_token", {
+            const response = await fetch("https://red-neuronal-api.onrender.com/generate_token", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -79,7 +79,7 @@
         console.log(todos2);
         loading = true;
         try {
-            const response = await fetch("http://127.0.0.1:8000/login", {
+            const response = await fetch("https://red-neuronal-api.onrender.com/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
