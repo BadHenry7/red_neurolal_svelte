@@ -13,7 +13,7 @@
     /*
     onMount(async () => {
         try {
-            const response = await fetch("https://red-neuronal-api.onrender.com/login");
+            const response = await fetch("http://127.0.0.1:8000/login");
             if (!response.ok) throw new Error("Error al cargar los datos");
             todos = await response.json();
         } catch (e) {
@@ -30,29 +30,32 @@
             loginModal = new bootstrap.Modal(modalElement);
         }
         if (window.grecaptcha) {
-        window.grecaptcha.render(document.querySelector(".g-recaptcha"));
+       window.grecaptcha.render(document.querySelector(".g-recaptcha"));
     }
   
         
     });
 
     async function token(event) {
-        henry=false
-         event.preventDefault(); 
+      
+        event.preventDefault(); 
+        console.log("sddddddddddddd")
         const recaptchaResponse = grecaptcha.getResponse();
         if (recaptchaResponse.length === 0) {
+            console.log("aaa")
+
         Swal.fire({
             icon: "error",
             title: "Oops...",
             text: "Debe completar el CAPTCHA",
         });
-        
+    
         }else{
            
       
 
 
-            const response = await fetch("https://red-neuronal-api.onrender.com/generate_token", {
+            const response = await fetch("http://127.0.0.1:8000/generate_token", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -76,7 +79,7 @@
         console.log(todos2);
         loading = true;
         try {
-            const response = await fetch("https://red-neuronal-api.onrender.com/login", {
+            const response = await fetch("http://127.0.0.1:8000/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -232,7 +235,7 @@
 
     function enterlog() {
         if (event.key === "Enter") {
-            token();
+            token(event);
         }
     }
 
@@ -276,7 +279,7 @@
                     bind:value={v_password}
                 />
             </div>
-    <form id="login-form">
+    <form id="login-form"><!----><!--6LeeFo4qAAAAAFIb0Wb5mRE0KWPwaU7xmNEuPfWE-->
         <div class="g-recaptcha" style="padding-left: 23%;" data-sitekey="6LdletYqAAAAAN1Insg4lQuDyDO8zO834KBO6nvs"></div>
         
     </form>
