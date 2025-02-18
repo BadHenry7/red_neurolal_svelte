@@ -13,7 +13,7 @@
     /*
     onMount(async () => {
         try {
-            const response = await fetch("https://red-neuronal-api.onrender.com/login");
+            const response = await fetch("http://127.0.0.1:8000/login");
             if (!response.ok) throw new Error("Error al cargar los datos");
             todos = await response.json();
         } catch (e) {
@@ -29,33 +29,34 @@
         if (modalElement) {
             loginModal = new bootstrap.Modal(modalElement);
         }
-        if (window.grecaptcha) {
-       window.grecaptcha.render(document.querySelector(".g-recaptcha"));
-    }
+    //     if (window.grecaptcha) {
+    //    window.grecaptcha.render(document.querySelector(".g-recaptcha"));
+    // }
   
         
     });
-
+let a=false
     async function token(event) {
       
         event.preventDefault(); 
-        console.log("sddddddddddddd")
-        const recaptchaResponse = grecaptcha.getResponse();
-        if (recaptchaResponse.length === 0) {
-            console.log("aaa")
+        // console.log("sddddddddddddd")
+        // const recaptchaResponse = grecaptcha.getResponse();
+        // if (recaptchaResponse.length === 0) {
+        //     console.log("aaa")
 
-        Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Debe completar el CAPTCHA",
-        });
-    
+        // Swal.fire({
+        //     icon: "error",
+        //     title: "Oops...",
+        //     text: "Debe completar el CAPTCHA",
+        // });
+    if (a==true){
+        
         }else{
            
       
 
 
-            const response = await fetch("https://red-neuronal-api.onrender.com/generate_token", {
+            const response = await fetch("http://127.0.0.1:8000/generate_token", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -79,7 +80,7 @@
         console.log(todos2);
         loading = true;
         try {
-            const response = await fetch("https://red-neuronal-api.onrender.com/login", {
+            const response = await fetch("http://127.0.0.1:8000/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -279,8 +280,8 @@
                     bind:value={v_password}
                 />
             </div>
-    <form id="login-form"><!----><!--6LeeFo4qAAAAAFIb0Wb5mRE0KWPwaU7xmNEuPfWE-->
-        <div class="g-recaptcha" style="padding-left: 23%;" data-sitekey="6LdletYqAAAAAN1Insg4lQuDyDO8zO834KBO6nvs"></div>
+    <form id="login-form"><!--6LdletYqAAAAAN1Insg4lQuDyDO8zO834KBO6nvs-->
+        <div class="g-recaptcha" style="padding-left: 23%;" data-sitekey="6LeeFo4qAAAAAFIb0Wb5mRE0KWPwaU7xmNEuPfWE"></div>
         
     </form>
 

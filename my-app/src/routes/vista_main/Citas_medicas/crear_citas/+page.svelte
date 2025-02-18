@@ -1,6 +1,5 @@
 <script>
-    import Navbaradmin from "$lib/Navbar.svelte";
-
+    import Navbaradmin from "../../../../lib/Navbaradmin.svelte";
     import { onMount } from "svelte";
 
     let todos = {};
@@ -18,7 +17,7 @@
     onMount(async () => {
         try {
             console.log("entra al try de /getpaciente");
-            const response = await fetch("https://red-neuronal-api.onrender.com/getpaciente");
+            const response = await fetch("http://127.0.0.1:8000/getpaciente");
             if (!response.ok) throw new Error("Error al cargar los datos");
             const data = await response.json();
             todos = data.resultado;
@@ -46,7 +45,7 @@
 
         try {
             console.log("entra al try de /getmedico");
-            const response = await fetch("https://red-neuronal-api.onrender.com/getmedico");
+            const response = await fetch("http://127.0.0.1:8000/getmedico");
             if (!response.ok) throw new Error("Error al cargar los datos");
             const data = await response.json();
             todos = data.resultado;
@@ -109,7 +108,7 @@ function ConfirmarAgendar() {
         console.log("Agendar a la fecha  " + vfecha + " a la hora " + vhora);
         try {
             
-            const response = await fetch("https://red-neuronal-api.onrender.com/create_cita/", {
+            const response = await fetch("http://127.0.0.1:8000/create_cita/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

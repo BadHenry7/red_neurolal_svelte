@@ -15,7 +15,7 @@
             console.log("agendamos cita");
             console.log(n);
 
-            const response = await fetch("https://red-neuronal-api.onrender.com/post_citas_users/", {
+            const response = await fetch("http://127.0.0.1:8000/post_citas_users/", {
                 
                 method: "POST",
                 headers: {
@@ -66,6 +66,9 @@
                             <th class="px-4 py-2 border">Doctor</th>
                             <th class="px-4 py-2 border">Fecha</th>
                             <th class="px-4 py-2 border">Hora</th>
+                            <th class="px-4 py-2 border">Ubicacion</th>
+                            <th class="px-4 py-2 border">Salas</th>
+
                         </tr>
                     </thead>
 
@@ -73,10 +76,12 @@
                         {#each todos as todo}
                             <tr class="hover:bg-gray-50">
                                 <td class="px-4 py-2 border">{todo.paciente}</td>
-                                <td class="px-4 py-2 border">{todo.medico}</td
-                                >
+                                <td class="px-4 py-2 border">{todo.medico}</td>
                                 <td class="px-4 py-2 border">{todo.fecha}</td>
                                 <td class="px-4 py-2 border">{todo.hora}</td>
+                                <td class="px-4 py-2 border">{todo.ubicacion}</td>
+                                <td class="px-4 py-2 border">{todo.salas}</td>
+
                             </tr>
                         {/each}
                     </tbody>
