@@ -12,7 +12,7 @@ import Navbaradmin from "$lib/Navbar.svelte";
   onMount(async () => {
     try {
       console.log("2");
-      const response = await fetch("http://127.0.0.1:8000/get_cita_admin/");
+      const response = await fetch("https://red-neuronal-api.onrender.com/get_cita_admin/");
       if (!response.ok) throw new Error("Error al cargar los datos");
       const data = await response.json();
       todos = data.resultado;
@@ -55,7 +55,7 @@ import Navbaradmin from "$lib/Navbar.svelte";
     try {
       console.log("Entra al try de buscar");
 
-      const response = await fetch("http://127.0.0.1:8000/editar_cita/", {
+      const response = await fetch("https://red-neuronal-api.onrender.com/editar_cita/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -112,7 +112,7 @@ import Navbaradmin from "$lib/Navbar.svelte";
         //    const v_edit_Doctor_cita = document.getElementById("Doctor_cita");
         // v_edit_Doctor_cita.removeAttribute("");
         //v_edit_Doctor_cita.focus();
-        const response = await fetch("http://127.0.0.1:8000/getmedico");
+        const response = await fetch("https://red-neuronal-api.onrender.com/getmedico");
         if (!response.ok) throw new Error("Error al cargar los datos");
         const data = await response.json();
         medico = data.resultado;
@@ -188,7 +188,7 @@ import Navbaradmin from "$lib/Navbar.svelte";
 
     try {
 
-      const response = await fetch("http://127.0.0.1:8000/update_cita", {
+      const response = await fetch("https://red-neuronal-api.onrender.com/update_cita", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -262,7 +262,7 @@ import Navbaradmin from "$lib/Navbar.svelte";
     vid = id;   
     console.log("entra al eliminar de la cita numero "+vid)
     try {
-    const response = await fetch("http://127.0.0.1:8000/eliminar_cita", {
+    const response = await fetch("https://red-neuronal-api.onrender.com/eliminar_cita", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json", // Asegúrate de especificar que envías JSON

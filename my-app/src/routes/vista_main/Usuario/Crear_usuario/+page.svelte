@@ -51,7 +51,7 @@
 
     async function Register() {
         try {
-            const response = await fetch("http://127.0.0.1:8000/create_user", {
+            const response = await fetch("https://red-neuronal-api.onrender.com/create_user", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
