@@ -280,8 +280,8 @@
                     bind:value={v_password}
                 />
             </div>
-    <form id="login-form"><!--6LdletYqAAAAAN1Insg4lQuDyDO8zO834KBO6nvs-->
-        <div class="g-recaptcha" style="padding-left: 23%;" data-sitekey="6LeeFo4qAAAAAFIb0Wb5mRE0KWPwaU7xmNEuPfWE"></div>
+    <form id="login-form"><!----><!--6LeeFo4qAAAAAFIb0Wb5mRE0KWPwaU7xmNEuPfWE-->
+        <div class="g-recaptcha" style="padding-left: 23%;" data-sitekey="6LdletYqAAAAAN1Insg4lQuDyDO8zO834KBO6nvs"></div>
         
     </form>
 
