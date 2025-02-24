@@ -49,7 +49,8 @@
             title: "Oops...",
             text: "Debe completar el CAPTCHA",
         });
- 
+        
+   
         
         }else{
            
@@ -92,6 +93,9 @@
             });
 
             if (response.ok) {
+
+
+
                 const data = await response.json();
                 todos = data.resultado;
 
@@ -136,6 +140,11 @@
                     let miStorage = window.localStorage;
                     miStorage.setItem("usuario", JSON.stringify(encontrado));
 
+
+                    
+            
+
+
                     //  alert(                        "Inicio de sesion exitoso2. Bienvenido Usuario " + name,);
                     //document.getElementById("loginex").style.display = "flex";
                     Swal.fire({
@@ -145,10 +154,17 @@
                         title: "Inicio de sesion exitoso, bienvenido " + name,
                         showConfirmButton: false,
                     });
-
-                    setTimeout(() => {
-                        window.location.href = "/usuario";
-                    }, 2000);
+                    const v_redirigir = localStorage.getItem("Redirigir"); 
+                            setTimeout(() => {
+                                if (v_redirigir) {
+                            window.location.href = v_redirigir; 
+                            localStorage.removeItem("Redirigir"); 
+                            
+                                }else{
+                                window.location.href = "/usuario";
+                                } 
+                            }, 2000);
+                            
                 } else if (rol_v==3) {
                     let name = data.resultado[0].nombre;
                     let id = data.resultado[0].id;
@@ -280,7 +296,7 @@
                     bind:value={v_password}
                 />
             </div>
-    <form id="login-form"><!----><!--6LeeFo4qAAAAAFIb0Wb5mRE0KWPwaU7xmNEuPfWE-->
+    <form id="login-form"><!----><!-- 6LeeFo4qAAAAAFIb0Wb5mRE0KWPwaU7xmNEuPfWE -->
         <div class="g-recaptcha" style="padding-left: 23%;" data-sitekey="6LdletYqAAAAAN1Insg4lQuDyDO8zO834KBO6nvs"></div>
         
     </form>
