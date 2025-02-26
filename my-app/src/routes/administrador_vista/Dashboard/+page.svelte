@@ -1,4 +1,4 @@
-<script>
+<!--<script>
     // MONTHNAME() PARA DEVOLVER EL NOMBRE DEL MES  y yearname el año
     import Navbaradmin from "../../../lib/Navbaradmin.svelte";
     import { onMount } from "svelte";
@@ -19,7 +19,7 @@
         try {
             console.log;
             const response = await fetch(
-                "https://red-neuronal-api.onrender.com/estadisticas_citas",
+                "http://127.0.0.1:8000/estadisticas_citas",
             );
             if (!response.ok) throw new Error("Error al cargar los datos");
             const data = await response.json();
@@ -110,7 +110,7 @@
             try {
                 console.log;
                 const response = await fetch(
-                    "https://red-neuronal-api.onrender.com/estadisticas2_citas",
+                    "http://127.0.0.1:8000/estadisticas2_citas",
                 );
                 if (!response.ok) throw new Error("Error al cargar los datos");
                 const data = await response.json();
@@ -183,7 +183,7 @@
             try {
                 console.log;
                 const response = await fetch(
-                    "https://red-neuronal-api.onrender.com/estadisticas3_citas",
+                    "http://127.0.0.1:8000/estadisticas3_citas",
                 );
                 if (!response.ok) throw new Error("Error al cargar los datos");
                 const data = await response.json();
@@ -256,7 +256,7 @@
             try {
                 console.log;
                 const response = await fetch(
-                    "https://red-neuronal-api.onrender.com/estadisticas4_citas",
+                    "http://127.0.0.1:8000/estadisticas4_citas",
                 );
                 if (!response.ok) throw new Error("Error al cargar los datos");
                 const data = await response.json();
@@ -342,7 +342,7 @@
             try {
                 console.log;
                 const response = await fetch(
-                    "https://red-neuronal-api.onrender.com/estadisticas_citas_activas",
+                    "http://127.0.0.1:8000/estadisticas_citas_activas",
                 );
                 if (!response.ok) throw new Error("Error al cargar los datos");
                 const data = await response.json();
@@ -415,7 +415,7 @@
             try {
                 console.log;
                 const response = await fetch(
-                    "https://red-neuronal-api.onrender.com/estadisticas_citas_desactivado",
+                    "http://127.0.0.1:8000/estadisticas_citas_desactivado",
                 );
                 if (!response.ok) throw new Error("Error al cargar los datos");
                 const data = await response.json();
@@ -511,7 +511,7 @@
         try {
             console.log;
             const response = await fetch(
-                "https://red-neuronal-api.onrender.com/estadisticas_avg_citas",
+                "http://127.0.0.1:8000/estadisticas_avg_citas",
                 {
                     method: "POST",
                     headers: {
@@ -591,11 +591,39 @@
         }
     }
 </script>
+-->
+
+<script>
+import Navbaradmin from "../../../lib/Navbaradmin.svelte";
+
+</script>
 
 <Navbaradmin></Navbaradmin>
-<div class="container">
-    <iframe title="powerbibibi" width="1000" height="760" src="https://app.powerbi.com/view?r=eyJrIjoiNTNlYzFlZmYtMjM0ZS00NjU1LThhZDktNDExZjZjNGE2YjY2IiwidCI6IjFlOWFhYmU4LTY3ZjgtNGYxYy1hMzI5LWE3NTRlOTI0OTlhZSIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
+
+<div class="iframe-container">
+    <iframe 
+        title="powerbibibi" 
+        src="https://app.powerbi.com/view?r=eyJrIjoiNTNlYzFlZmYtMjM0ZS00NjU1LThhZDktNDExZjZjNGE2YjY2IiwidCI6IjFlOWFhYmU4LTY3ZjgtNGYxYy1hMzI5LWE3NTRlOTI0OTlhZSIsImMiOjR9" 
+        frameborder="0" 
+        allowfullscreen>
+    </iframe>
 </div>
+
+<style>
+    .iframe-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100vw;
+    }
+
+    iframe {
+        width: 70vw;
+        height: 92vh;
+    }
+</style>
+
 <!--<div style="">
     <div class="container">
         <div class="row">

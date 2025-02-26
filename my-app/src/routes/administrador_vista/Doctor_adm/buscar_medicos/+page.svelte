@@ -1,3 +1,5 @@
+
+
 <script>
     import Navbaradmi from "$lib/Navbaradmin.svelte";
     import { onMount } from "svelte";
@@ -9,9 +11,9 @@
     var v_id = 1;
     onMount(async () => {
         try {
-            const response = await fetch("https://red-neuronal-api.onrender.com/get_medicos");
+            const response = await fetch("http://127.0.0.1:8000/get_medicos");
             const result = await fetch(
-                "https://red-neuronal-api.onrender.com/get_atributoxusuarios",
+                "http://127.0.0.1:8000/get_atributoxusuarios",
             );
             if (response) {
                 const data = await response.json();
@@ -25,7 +27,15 @@
                 console.log("esta es de todos2", todos2);
 
                 setTimeout(() => {
-                    globalThis.$("#myTable").DataTable(); // Para convertrlo en datatable :D
+                    globalThis.$("#myTable").DataTable({
+
+
+                        stripeClasses: ["bg-white", "bg-light"], 
+            language: {
+            url: "//cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json",}
+
+
+                    }); // Para convertrlo en datatable :D
                 }, 0);
             } else {
             }
@@ -60,7 +70,7 @@
         cambiar.insertBefore(v_editar, ocultar);
 
         try {
-            const response = await fetch("https://red-neuronal-api.onrender.com/get_user", {
+            const response = await fetch("http://127.0.0.1:8000/get_user", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -74,7 +84,7 @@
 
             if (response) {
                 const result = await fetch(
-                    "https://red-neuronal-api.onrender.com/get_atributoxusuario",
+                    "http://127.0.0.1:8000/get_atributoxusuario",
                     {
                         method: "POST",
                         headers: {
@@ -142,7 +152,7 @@
         v_id = id;
 
         try {
-            const response = await fetch("https://red-neuronal-api.onrender.com/estado_user", {
+            const response = await fetch("http://127.0.0.1:8000/estado_user", {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -190,7 +200,7 @@
         v_id = id;
 
         try {
-            const response = await fetch("https://red-neuronal-api.onrender.com/estado_user", {
+            const response = await fetch("http://127.0.0.1:8000/estado_user", {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -244,7 +254,7 @@
             console.log("Entra al try de actualizar");
 
             const response = await fetch(
-                "https://red-neuronal-api.onrender.com/actualizaruser",
+                "http://127.0.0.1:8000/actualizaruser",
                 {
                     method: "PUT",
                     headers: {
@@ -267,7 +277,7 @@
                 console.log("entra al update atributoxusuario")
                 console.log(vespecialidad)
                 const result = await fetch(
-                    "https://red-neuronal-api.onrender.com/updateatributoxusuario",
+                    "http://127.0.0.1:8000/updateatributoxusuario",
                     {
                         method: "PUT",
                         headers: {
@@ -328,7 +338,8 @@
 
 <div id="Mostrardoctores">
     <div class="container py-4">
-        <h2 class="">Lista de doctores</h2>
+        <h2 class="text-center"><b>¡Lista de doctores!</b></h2>
+        <hr>
         {#if loading}
             <h2>Cargando datos...</h2>
         {:else if error}
@@ -337,43 +348,40 @@
             <div class="">
                 <table
                     class="min-w-full bg-white border border-gray-300"
-                    id="myTable"
-                >
-                    <thead>
+                    id="myTable">
+                    <thead class="bg-primary text-white">
                         <tr>
-                            <th class="px-4 py-2 border">Usuario</th>
-                            <th class="px-4 py-2 border">Nombre</th>
-                            <th class="px-4 py-2 border">Apellido</th>
-                            <th class="px-4 py-2 border">Documento</th>
-                            <th class="px-4 py-2 border">Telefono</th>
-                            <th class="px-4 py-2 border">Especialidad</th>
-                            <th class="px-4 py-2 border">Estado</th>
-                            <th class="px-4 py-2 border">Opcion</th>
+                            <th class=" py-2 border">Usuario</th>
+                            <th class=" py-2 border">Nombre</th>
+                            <th class=" py-2 border">Apellido</th>
+                            <th class=" py-2 border">Documento</th>
+                            <th class=" py-2 border">Telefono</th>
+                            <th class=" py-2 border">Especialidad</th>
+                            <th class=" py-2 border">Estado</th>
+                            <th class=" py-2  border" >Opciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         {#each todos as todo}
                             <tr class="hover:bg-gray-50">
-                                <td class="px-4 py-2 border">{todo.usuario}</td>
-                                <td class="px-4 py-2 border">{todo.nombre}</td>
-                                <td class="px-4 py-2 border">{todo.apellido}</td
+                                <td class=" py-2 border">{todo.usuario}</td>
+                                <td class=" py-2 border">{todo.nombre}</td>
+                                <td class=" py-2 border">{todo.apellido}</td
                                 >
-                                <td class="px-4 py-2 border"
+                                <td class=" py-2 border"
                                     >{todo.documento}</td
                                 >
-                                <td class="px-4 py-2 border">{todo.telefono}</td
+                                <td class=" py-2 border">{todo.telefono}</td
                                 >
                                 {#each todos2 as todo2}
                                     {#if todo2.id_usuario === todo.id}
-                                        <td class="px-4 py-2 border"
+                                        <td class=" py-2 border"
                                             >{todo2.valor}</td
                                         >
                                     {/if}
                                 {/each}
-                                <td class="px-4 py-2 border">
-                                    <!--
- a
-                                    -->
+                                <td class=" py-2 mx-5 border">
+
                                     <span
                                         class={todo.estado
                                             ? "text-green-600"
@@ -382,16 +390,18 @@
                                         {todo.estado ? "Activo" : "Desactivado"}
                                     </span>
                                 </td>
-                                <td class="px-4 py-2 border">
-                                    <button
+                                <td class=" py-2 mx-5  border">
+
+                                   
+                                    <button aria-label="Para editar"
                                         class="btn btn-info"
                                         on:click={() =>
-                                            editar(todo.id, todo.nombre)}
-                                        >Editar</button
-                                    >
+                                            editar(todo.id, todo.nombre)} 
+                                        > <i class="bi bi-pencil-square"></i></button>
+                                            
                                     {#if todo.estado}
                                         <!-- Mostrar botón "Desactivar" si el usuario está activo -->
-                                        <button
+                                        <button aria-label="para desactivar"
                                             class="btn btn-danger"
                                             on:click={() =>
                                                 desactivar(
@@ -400,19 +410,20 @@
                                                     todo.usuario,
                                                 )}
                                         >
-                                            Desactivar
+                                              <i class="bi bi-toggle-off"></i>
                                         </button>
                                     {:else}
                                         <!-- Mostrar botón "Activar" si el usuario está desactivado -->
 
-                                        <button
+                                        <button aria-label="para activar"
                                             class="btn btn-success"
                                             on:click={() =>
                                                 activar(todo.id, todo.nombre)}
                                         >
-                                            Activar
+                                        <i class=" bi bi-toggle-on"></i>
                                         </button>
                                     {/if}
+                                  
                                 </td>
                             </tr>
                         {/each}
