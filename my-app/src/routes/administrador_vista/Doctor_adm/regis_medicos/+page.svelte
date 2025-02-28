@@ -133,7 +133,7 @@
 
 
             console.log("si entra?")
-            const response = await fetch("http://127.0.0.1:8000/create_user", {
+            const response = await fetch("https://red-neuronal-api.onrender.com/create_user", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -169,7 +169,7 @@
             console.log("Este es el valor que tiene v_especialidad")
             console.log(v_especialidad)
             if (data.Informacion != "Ya_existe") {
-                const response = await fetch("http://127.0.0.1:8000/create_atributoxusuario", {
+                const response = await fetch("https://red-neuronal-api.onrender.com/create_atributoxusuario", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
