@@ -133,7 +133,7 @@
 
 
             console.log("si entra?")
-            const response = await fetch("https://red-neuronal-api.onrender.com/create_user", {
+            const response = await fetch("http://127.0.0.1:8000/create_user", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -169,7 +169,7 @@
             console.log("Este es el valor que tiene v_especialidad")
             console.log(v_especialidad)
             if (data.Informacion != "Ya_existe") {
-                const response = await fetch("https://red-neuronal-api.onrender.com/create_atributoxusuario", {
+                const response = await fetch("http://127.0.0.1:8000/create_atributoxusuario", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -315,13 +315,7 @@
                     <p class="text-danger">⚠️Las contraseñas no son las mismas  </p>
                      {/if}
 
-                    <div class="mb-3 ">
-                        <input type="checkbox" id="terminos" required />
-                        <button class="btn btn-link p-0" href="#" data-bs-toggle="modal" data-bs-target="#TerminosCondiciones">
-                                Acepto los términos y condiciones</button>
-                      
-                    </div>
-
+                    
                     <button type="submit" class="btn btn-primary w-100">Registrar</button>
                 </form>
             </div>

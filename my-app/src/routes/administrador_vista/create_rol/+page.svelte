@@ -16,8 +16,8 @@
 
   onMount(async () => {
     try {
-      const response = await fetch("https://red-neuronal-api.onrender.com/get_modulos");
-      const response_roles = await fetch("https://red-neuronal-api.onrender.com/get_roles");
+      const response = await fetch("http://127.0.0.1:8000/get_modulos");
+      const response_roles = await fetch("http://127.0.0.1:8000/get_roles");
 
       if (!response.ok) throw new Error("Error al cargar los datos");
      const data = await response.json();
@@ -60,7 +60,7 @@
     try {
       console.log("sssssss");
 
-      const response = await fetch("https://red-neuronal-api.onrender.com/create_rol",{
+      const response = await fetch("http://127.0.0.1:8000/create_rol",{
 
         method: "POST",
         headers: {
@@ -103,7 +103,7 @@
 
     console.log("Entramos al try de modulos asignados")
     try {
-      const response = await fetch("https://red-neuronal-api.onrender.com/get_modulos_asignado",{
+      const response = await fetch("http://127.0.0.1:8000/get_modulos_asignado",{
       method: "POST",
       headers: {
         "Content-Type": "application/json", },
@@ -132,7 +132,7 @@
 
 
 
-    const result = await fetch("https://red-neuronal-api.onrender.com/get_mxp_id",{
+    const result = await fetch("http://127.0.0.1:8000/get_mxp_id",{
       method: "POST",
       headers: {
         "Content-Type": "application/json", },
@@ -178,7 +178,7 @@
       console.log("id del rol que fue creado:",v_id_rol)
       console.log("modulos seleccionados",seleccionados)
 
-      const response = await fetch("https://red-neuronal-api.onrender.com/create_moduloxperfil",{
+      const response = await fetch("http://127.0.0.1:8000/create_moduloxperfil",{
 
         method: "POST",
         headers: {
@@ -241,7 +241,7 @@
       console.log(seleccionados)
 
       
-      const response = await fetch ('https://red-neuronal-api.onrender.com/update_modulo_seleccionado',{
+      const response = await fetch ('http://127.0.0.1:8000/update_modulo_seleccionado',{
 
       method: 'PUT',
       headers:{ "Content-Type": "application/json",},
@@ -312,10 +312,11 @@ let loading_estado=true
 
 
 <!--Creacion de roles-->
-<div class="card-header">
-  <div class="container">Creacion de roles</div>
-</div>
-<div class="card-body">   
+
+
+<div class="card-body container"> 
+  <div class="container text-center"><b class="fs-4">¡Creacion de roles!</b></div>
+
   <div class="row">
     <div class="col-xl-6">
       <label for="" >Nombre del rol</label>
@@ -330,7 +331,7 @@ let loading_estado=true
   <div class="row mt-1">
     <div class="col-xl-12">
       <button class="btn"  data-bs-toggle="modal" data-bs-target="#RModal2">
-      <i class="fas fa-plus-square fa-2x " style="color: green;"></i><span class="mx-2 ">Añadir modulo</span>
+      <i class="fas fa-plus-square fa-2x " style="color: green;"></i><span class="mx-2 fs-5">Añadir modulo</span>
       </button>
       
     </div>
@@ -417,8 +418,8 @@ let loading_estado=true
 
 <div id="Mostrarroles">
   <div class="container">
-    <h2 class="text-center" ><b>¡Lista de Roles!</b></h2>
-    <hr>
+    
+    
     
     {#if loading}
       <!---->

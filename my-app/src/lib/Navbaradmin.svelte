@@ -70,7 +70,7 @@ async function showModal() {
         
         try {
             console.log("entra al try");
-            const response = await fetch("https://red-neuronal-api.onrender.com/get_user", {
+            const response = await fetch("http://127.0.0.1:8000/get_user", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -143,7 +143,7 @@ async function editar() {
   let  v_documento =document.getElementById("nav_documento").value;
   let v_telefono  =document.getElementById("nav_telefono").value;
   console.log(v_password)
-  const response = await fetch("https://red-neuronal-api.onrender.com/update_adm", {
+  const response = await fetch("http://127.0.0.1:8000/update_adm", {
           method: "PUT",
           headers: {
               "Content-Type": "application/json",
@@ -206,10 +206,10 @@ async function editar() {
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="/administrador_vista" id="name" on:click={redirigir}>.</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="Menu-usuarios" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#Menu-usuarios" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <div class="collapse navbar-collapse" id="Menu-usuarios">
         <ul class="navbar-nav">
           <li class="nav-item dropdown">
             <!--Aca empieza otro-->
@@ -252,10 +252,11 @@ async function editar() {
           <li class="nav-item">
             <a class="nav-link" href="/administrador_vista/Dashboard">Dashboard</a><!---->
           </li>
+          <!--
           <li class="nav-item">
             <a class="nav-link" href="/administrador_vista/perfil_adm">Perfil</a>
           </li>
-
+          -->
           <li class="nav-item">
             <a class="nav-link" href="/administrador_vista/create_rol">Roles</a>
           </li>
@@ -304,35 +305,35 @@ async function editar() {
                   <!--password-->
                  <div class="mb-3 mt-2 mx-2" role="presentation">
                   <div class="input-group" >
-                      <span class="input-group-text"><i class="bi bi-person-circle"></i></span>
+                      <span class="input-group-text"><i class="bi bi-lock"></i></span>
                       <input type="password" class="form-control" name="password" id="nav_password" required autocomplete="off" readonly>
                   </div> 
                  </div>
                  <!--nombre-->
                  <div class="mb-3 mt-2 mx-2">
                   <div class="input-group">
-                      <span class="input-group-text"><i class="bi bi-person-circle"></i></span>
+                      <span class="input-group-text"><i class="bi bi-person"></i></span>
                       <input type="text" class="form-control" id="nav_nombre" required autocomplete="off" readonly>
                   </div> 
                  </div>
                  <!--apellido-->
                  <div class="mb-3 mt-2 mx-2">
                   <div class="input-group">
-                      <span class="input-group-text"><i class="bi bi-person-circle"></i></span>
+                      <span class="input-group-text"><i class="bi bi-person"></i></span>
                       <input type="text" class="form-control" id="nav_apellido" required autocomplete="off" readonly>
                   </div> 
                  </div>
                   <!--Documento-->
                   <div class="mb-3 mt-2 mx-2">
                     <div class="input-group">
-                        <span class="input-group-text"><i class="bi bi-person-circle"></i></span>
+                        <span class="input-group-text"><i class="bi bi-card-list"></i></span>
                         <input type="text" class="form-control" id="nav_documento" required autocomplete="off" readonly>
                     </div> 
                    </div>
                    <!--Telefono-->
                   <div class="mb-3 mt-2 mx-2">
                     <div class="input-group">
-                        <span class="input-group-text"><i class="bi bi-person-circle"></i></span>
+                        <span class="input-group-text"><i class="bi bi-telephone"></i></span>
                         <input type="text" class="form-control" id="nav_telefono" required autocomplete="off" readonly>
                     </div> 
                    </div>

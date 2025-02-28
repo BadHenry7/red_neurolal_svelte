@@ -57,7 +57,7 @@
                 console.log(n);
 
                 const response = await fetch(
-                    "https://red-neuronal-api.onrender.com/reportes_citas/",
+                    "http://127.0.0.1:8000/reportes_citas/",
                     {
                         method: "POST",
                         headers: {
@@ -134,7 +134,7 @@
                 console.log(fecha_de);
                 console.log(fecha_hasta);
                 const response = await fetch(
-                    "https://red-neuronal-api.onrender.com/reportes_diagnosticos/",
+                    "http://127.0.0.1:8000/reportes_diagnosticos/",
                     {
                         method: "POST",
                         headers: {
@@ -208,7 +208,7 @@
                 console.log(fecha_de);
                 console.log(fecha_hasta);
                 const response = await fetch(
-                    "https://red-neuronal-api.onrender.com/reportes_historial/",
+                    "http://127.0.0.1:8000/reportes_historial/",
                     {
                         method: "POST",
                         headers: {
@@ -321,7 +321,7 @@ let loading_select=false
     async function select_doctor() {
         try{
             
-            const response = await fetch("https://red-neuronal-api.onrender.com/getmedico")
+            const response = await fetch("http://127.0.0.1:8000/getmedico")
             const data = await response.json();
             doctores = data.resultado;
             console.log("eu",doctores);
@@ -370,6 +370,10 @@ let loading_select=false
 <Navbaradmin></Navbaradmin>
 
 
+
+
+
+
 <div class="container" style="margin-top: 5%;">
 
     <div class="text-center pt-1 fs-3">
@@ -387,13 +391,13 @@ let loading_select=false
     </div>
 
     <div class="row">
-        <div class="col-xl-6 text-end">
+        <div class="col-xl-6 text-start">
             Desde:
-            <input type="date" name="citas" id="desde_citas" />
+            <input type="date" name="citas" id="desde_citas" class="form-control"/>
         </div>
-        <div class="col-xl-6">
+        <div class="col-xl-6">              
             Hasta:
-            <input type="date" name="citas" id="hasta_citas" />
+            <input type="date" name="citas" id="hasta_citas" class="form-control"/>
         </div>
     </div>
 
@@ -403,7 +407,7 @@ let loading_select=false
 
     </div>
 </div>
-<!--XDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD-->
+
 
 <div class="modal fade" id="sendpdf" tabindex="-1" aria-labelledby="rModalLabel" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
     <div class="modal-dialog">
