@@ -11,7 +11,7 @@
 
     onMount(async () => {
         try {
-            const response = await fetch("https://red-neuronal-api.onrender.com/getmedico");
+            const response = await fetch("http://127.0.0.1:8000/getmedico");
             if (!response.ok) throw new Error("Error al cargar los datos");
             const data = await response.json();
             todos = data.resultado;
@@ -93,7 +93,7 @@
 
         try {
             const response = await fetch(
-                "https://red-neuronal-api.onrender.com/create_cita/",
+                "http://127.0.0.1:8000/create_cita/",
                 {
                     method: "POST",
                     headers: {
@@ -144,6 +144,10 @@
 </script>
 
 <Navbarusuario></Navbarusuario>
+
+
+
+<!--
 <div
     style="background-image: url('/fondoR.jpg'); background-size: cover; background-position: center;height: 100vh; width: 100vw;"
 >
@@ -198,3 +202,4 @@
         </div>
     </div>
 </div>
+-->

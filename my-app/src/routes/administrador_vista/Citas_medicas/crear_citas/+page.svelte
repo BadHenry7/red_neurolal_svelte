@@ -1,7 +1,9 @@
 <script>
     import Navbaradmin from "../../../../lib/Navbaradmin.svelte";
     import { onMount } from "svelte";
+    
 
+    
     let todos = {};
     let loading = true;
     let error = null;
@@ -33,7 +35,7 @@
             
        
            console.log("entra al try de /getpaciente");
-            const response = await fetch("https://red-neuronal-api.onrender.com/getpaciente");
+            const response = await fetch("http://127.0.0.1:8000/getpaciente");
             if (!response.ok) throw new Error("Error al cargar los datos");
             const data = await response.json();
             todos = data.resultado;
@@ -61,7 +63,7 @@
 
         try {
             console.log("entra al try de /getmedico");
-            const response = await fetch("https://red-neuronal-api.onrender.com/getmedico");
+            const response = await fetch("http://127.0.0.1:8000/getmedico");
             if (!response.ok) throw new Error("Error al cargar los datos");
             const data = await response.json();
             todos = data.resultado;
@@ -86,6 +88,38 @@
         } finally {
             loading = false;
         }
+
+
+        try{
+
+
+            const response_node = await fetch("https://api-nodejs-buxf.onrender.com/api/hospitales/gethospitales");
+        const data_node= await response_node.json()
+        console.log(data_node)//ubicacion
+        let todos_node= data_node.data;
+        console.log("esto es data de node", todos_node)
+
+        const Select_hospitales = document.getElementById("ubicacion");
+
+        for (let i = 0; i < todos_node.length; i++) {
+  
+          const hospital = todos_node[i];   
+          const option = document.createElement("option");
+          option.value = hospital.nombre_hospital;
+
+          option.textContent = hospital.nombre_hospital;
+          Select_hospitales.appendChild(option);      
+          
+        }
+        
+        console.log(Select_hospitales);  
+
+
+
+        }catch(e){
+            error=e.message;
+        }
+
     });
 
 
@@ -111,6 +145,8 @@ function ConfirmarAgendar() {
         const vpaciente = document.getElementById("paciente").value;
         const vmedico = document.getElementById("medico").value;
         const vfecha = document.getElementById("c_m_d").value;
+        const v_ubicacion = document.getElementById("ubicacion").value;
+
         console.log("vhora de agendar",vhora)
         const vestado = 1;
         //const vid_usuario=obtener id de esa seleccion
@@ -124,7 +160,7 @@ function ConfirmarAgendar() {
         console.log("Agendar a la fecha  " + vfecha + " a la hora " + vhora);
         try {
             
-            const response = await fetch("https://red-neuronal-api.onrender.com/create_cita/", {
+            const response = await fetch("http://127.0.0.1:8000/create_cita/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -135,6 +171,7 @@ function ConfirmarAgendar() {
                     estado: vestado,
                     id_usuario: vmedico, //medico
                     id_paciente: vpaciente,
+                    ubicacion:v_ubicacion
                 }),
             });
             Swal.fire({
@@ -201,6 +238,7 @@ let hours=["06:30", "07:00", "07:30", "08:00","08:30", "09:00", "09:30", "10:00"
 
     
 </script>
+    
 
 <Navbaradmin></Navbaradmin>
 <style>
@@ -268,6 +306,13 @@ let hours=["06:30", "07:00", "07:30", "08:00","08:30", "09:00", "09:30", "10:00"
                 <option selected>Seleccione</option>
             </select>
 
+            <div class="mt-5">
+                <label for=""><b>Elija una ubicacion</b></label>
+            </div>
+            <!--Eliga la ubicacion-->
+            <select  id="ubicacion" class="form-select" required>
+                <option selected>Seleccione</option>
+            </select>
 
         </div>
 
