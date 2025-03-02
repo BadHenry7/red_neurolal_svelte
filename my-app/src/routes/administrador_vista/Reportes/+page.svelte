@@ -60,7 +60,7 @@
                 console.log(n);
 
                 const response = await fetch(
-                    "http://127.0.0.1:8000/reportes_citas/",
+                    "https://red-neuronal-api.onrender.com/reportes_citas/",
                     {
                         method: "POST",
                         headers: {
@@ -137,7 +137,7 @@
                 console.log(fecha_de);
                 console.log(fecha_hasta);
                 const response = await fetch(
-                    "http://127.0.0.1:8000/reportes_diagnosticos/",
+                    "https://red-neuronal-api.onrender.com/reportes_diagnosticos/",
                     {
                         method: "POST",
                         headers: {
@@ -211,7 +211,7 @@
                 console.log(fecha_de);
                 console.log(fecha_hasta);
                 const response = await fetch(
-                    "http://127.0.0.1:8000/reportes_historial/",
+                    "https://red-neuronal-api.onrender.com/reportes_historial/",
                     {
                         method: "POST",
                         headers: {
@@ -324,7 +324,7 @@ let loading_select=false
     async function select_doctor() {
         try{
             
-            const response = await fetch("http://127.0.0.1:8000/getmedico")
+            const response = await fetch("https://red-neuronal-api.onrender.com/getmedico")
             const data = await response.json();
             doctores = data.resultado;
             console.log("eu",doctores);
