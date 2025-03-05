@@ -30,7 +30,7 @@
             console.log("agendamos cita");
             console.log(n);
 
-            const response = await fetch("http://127.0.0.1:8000/post_citas_users/", {
+            const response = await fetch("https://red-neuronal-api.onrender.com/post_citas_users/", {
                 
                 method: "POST",
                 headers: {
@@ -69,7 +69,7 @@
 
 
         try {
-            const response = await fetch("http://127.0.0.1:8000/getmedico");
+            const response = await fetch("https://red-neuronal-api.onrender.com/getmedico");
             if (!response.ok) throw new Error("Error al cargar los datos");
             const data = await response.json();
             todos = data.resultado;
@@ -237,7 +237,7 @@
 
         try {
             const response = await fetch(
-                "http://127.0.0.1:8000/create_cita/",
+                "https://red-neuronal-api.onrender.com/create_cita/",
                 {
                     method: "POST",
                     headers: {
