@@ -15,7 +15,7 @@
             console.log("agendamos cita");
             console.log(n);
 
-            const response = await fetch("https://red-neuronal-api.onrender.com/post_citas_users/", {
+            const response = await fetch("http://127.0.0.1:8000/post_citas_users/", {
                 
                 method: "POST",
                 headers: {
@@ -34,8 +34,17 @@
                 todos = data.resultado;
                 console.log(todos);
                 setTimeout(() => {
-                    globalThis.$("#myTable").DataTable(); // Para convertrlo en datatable :D
-                }, 0);
+        globalThis.$("#myTable").DataTable({
+
+            stripeClasses: ["bg-white", "bg-light"], 
+            language: {
+            url: "//cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json",
+      },
+        }); // Para convertrlo en datatable :D
+      
+      }, 0);
+
+
         } catch (e) {
             error = e.message;
             alert("Error en la solicitud: " + error);
@@ -60,7 +69,7 @@
                     class="min-w-full bg-white border border-gray-300"
                     id="myTable"
                 >
-                    <thead>
+                    <thead class="bg-primary text-white">
                         <tr>
                             <th class="px-4 py-2 border">Paciente</th>
                             <th class="px-4 py-2 border">Doctor</th>
