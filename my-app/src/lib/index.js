@@ -16,7 +16,7 @@ export  async function token_obtener(v_usuario, v_password, todos2, opcion) {
     if (opcion==="true"){
 
 
-        const response = await fetch("http://127.0.0.1:8000/generate_token_google", {
+        const response = await fetch("https://red-neuronal-api.onrender.com/generate_token_google", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -43,7 +43,7 @@ export  async function token_obtener(v_usuario, v_password, todos2, opcion) {
   
 
 
-        const response = await fetch("http://127.0.0.1:8000/generate_token", {
+        const response = await fetch("https://red-neuronal-api.onrender.com/generate_token", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
