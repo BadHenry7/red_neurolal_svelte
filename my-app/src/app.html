@@ -59,6 +59,8 @@
       crossorigin="anonymous"
     ></script>
 <script>
+
+	
 	todos = {}
 	henry = true
 	let v_token = ""
@@ -82,7 +84,7 @@
 
 		console.log("revisando ando", v_token)
 
-		const response = await fetch("https://red-neuronal-api.onrender.com/verify_token", {
+		const response = await fetch("http://127.0.0.1:8000/verify_token", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -102,17 +104,26 @@
 		console.log("revisando el token", todos)
 
 
-			if (pagina_v.startsWith("/administrador_vista" || pagina_v.startsWith("/usuario" || pagina_v.startsWith("/medico_vista" || pagina_v.startsWith("/vista_main"))))){
+			if (pagina_v.startsWith("/administrador_vista") || pagina_v.startsWith("/usuario") || pagina_v.startsWith("/medico_vista") || pagina_v.startsWith("/vista_main")){
 				console.log("muchacho, no seas tan pingo mano")	
 			
-				if (todos == "Token expirado") {
-					console.log("sssssssssds")
-					window.location.href = "/Login";
+			
+				let cookies = document.cookie.split("; ").find(row => row.startsWith("sesionGoogle="));
+
+				if (!cookies) {		
 
 
-				} else if (todos == "Token invalido") {
-					window.location.href = "/Login";
-					}
+					if (todos == "Token expirado") {
+						console.log("sssssssssds")
+						window.location.href = "/Login";
+
+
+					} else if (todos == "Token invalido") {
+						console.log("ggggggggg")
+
+						window.location.href = "/Login";
+						}
+				}
 			}
 	}
 

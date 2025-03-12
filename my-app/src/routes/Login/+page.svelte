@@ -38,21 +38,26 @@
 let a=false
 async function token(event) {
       
-      event.preventDefault(); 
-      console.log("sddddddddddddd")
-      const recaptchaResponse = grecaptcha.getResponse();
-      if (recaptchaResponse.length === 0) {
-          console.log("aaa")
+      // event.preventDefault(); 
+      // console.log("sddddddddddddd")
+      // const recaptchaResponse = grecaptcha.getResponse();
+      // if (recaptchaResponse.length === 0) {
+      //     console.log("aaa")
 
-      Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Debe completar el CAPTCHA",
-      });
-    }else{
+      // Swal.fire({
+      //     icon: "error",
+      //     title: "Oops...",
+      //     text: "Debe completar el CAPTCHA",
+      // });
+      if (a==true){
+ 
+      
+      }else{
          let token_v=await token_obtener(v_usuario, v_password, todos2);
-         console.log(token_v)
-          Login(token_v.todos2);
+         console.log("2",token_v)
+         console.log("3",token_v.login2)
+
+          Login(token_v);
           
       }
   }

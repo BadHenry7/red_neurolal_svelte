@@ -16,7 +16,7 @@
             console.log(n);
 
             const response = await fetch(
-                "https://red-neuronal-api.onrender.com/post_citas_doctor",
+                "http://127.0.0.1:8000/post_citas_doctor",
                 {
                     method: "POST",
                     headers: {
@@ -44,10 +44,30 @@
         }
     });
 
+    function ConfirmarCita(id) {
+        let v_id = id;
+    Swal.fire({
+                title: "¿Confirmas que quieres agendar esta cita?",
+                text: "",
+                icon: "question",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Si, añadir cita",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    cita_realizada(v_id)
+                }
+            });
+}
+
+    
+
+
     async function cita_realizada(id) {
         let v_id = id;
 
-        const response = await fetch("https://red-neuronal-api.onrender.com/eliminar_cita", {
+        const response = await fetch("http://127.0.0.1:8000/eliminar_cita", {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -97,7 +117,7 @@
                     class="min-w-full bg-white border border-gray-300"
                     id="myTable"
                 >
-                    <thead>
+                    <thead class="bg-primary text-white">
                         <tr>
                             <th class="px-4 py-2 border">Paciente</th>
                             <th class="px-4 py-2 border">Doctor</th>
@@ -119,8 +139,8 @@
                                 <td class="px-4 py-2 border">
                                     <button
                                         class="btn btn-outline-warning"
-                                        on:click={cita_realizada(todo.id_cita)}
-                                        >Cita Realizada</button
+                                        on:click={() => ConfirmarCita(todo.id_cita)}
+                                        >  <i class="bi bi-check-circle-fill"></i> Cita Realizada</button
                                     >
                                 </td>
                             </tr>
