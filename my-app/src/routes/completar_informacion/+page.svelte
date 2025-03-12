@@ -103,7 +103,7 @@
             }
 
         
-                const response = await fetch("http://127.0.0.1:8000/actualizaruser", {
+                const response = await fetch("https://red-neuronal-api.onrender.com/actualizaruser", {
                     method: "PUT",
                     headers: {
                         "Content-Type": "application/json",
