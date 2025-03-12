@@ -1,6 +1,6 @@
 <script>
     import { onMount } from "svelte";
-
+  import { token_obtener } from '$lib';
     let todos = {};
     let todos2 = {};
 
@@ -13,7 +13,7 @@
     /*
     onMount(async () => {
         try {
-            const response = await fetch("https://red-neuronal-api.onrender.com/login");
+            const response = await fetch("http://127.0.0.1:8000/login");
             if (!response.ok) throw new Error("Error al cargar los datos");
             todos = await response.json();
         } catch (e) {
@@ -35,53 +35,35 @@
   
         
     });
-
-    async function token(event) {
+let a=false
+async function token(event) {
       
-        event.preventDefault(); 
-        console.log("sddddddddddddd")
-        const recaptchaResponse = grecaptcha.getResponse();
-        if (recaptchaResponse.length === 0) {
-            console.log("aaa")
+      // event.preventDefault(); 
+      // console.log("sddddddddddddd")
+      // const recaptchaResponse = grecaptcha.getResponse();
+      // if (recaptchaResponse.length === 0) {
+      //     console.log("aaa")
 
-        Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Debe completar el CAPTCHA",
-        });
-        
-   
-        
-        }else{
-           
+      // Swal.fire({
+      //     icon: "error",
+      //     title: "Oops...",
+      //     text: "Debe completar el CAPTCHA",
+      // });
+      if (a==true){
+ 
       
-
-
-            const response = await fetch("https://red-neuronal-api.onrender.com/generate_token", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    usuario: v_usuario,
-                    password: v_password,
-                }),
-            });
-
-            const data = await response.json();
-            //return {"access_token": access_token}
-            todos2 = data.access_token;
-            console.log("Revisando token", todos2);
-            Login(todos2);
-            
-        }
-    }
-
+      }else{
+         let token_v=await token_obtener(v_usuario, v_password, todos2);
+         console.log(token_v)
+          Login(token_v.todos2);
+          
+      }
+  }
     async function Login(todos2) {
         console.log(todos2);
         loading = true;
         try {
-            const response = await fetch("https://red-neuronal-api.onrender.com/login", {
+            const response = await fetch("http://127.0.0.1:8000/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -296,10 +278,40 @@
                     bind:value={v_password}
                 />
             </div>
-    <form id="login-form"><!----><!-- 6LeeFo4qAAAAAFIb0Wb5mRE0KWPwaU7xmNEuPfWE -->
-        <div class="g-recaptcha" style="padding-left: 23%;" data-sitekey="6LdletYqAAAAAN1Insg4lQuDyDO8zO834KBO6nvs"></div>
-        
-    </form>
+
+         
+
+            <div class="row">
+                <div class="col-sm-2 col-md-3 col-xl-6 col-lg-2 col-2">
+                    <div class="input-group" >
+                        <span class="input-group-text">
+                            <img src="https://ssl.gstatic.com/images/branding/product/1x/gsa_512dp.png" alt="Google" width="24">
+                          </span>
+                        <form method="post" action="?/OAuth2">
+
+                        <button class="form-control btn" type="submit">Inicia sesion con Google</button>
+                        </form>    
+                    </div>
+                </div>
+                <div class="col-sm-2 col-md-3 col-xl-6 col-lg-3 col-2">
+                    <div class="input-group">
+                        <span class="input-group-text">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" width="24">
+
+                        </span>
+                        <button class="form-control"  style="font-size: 14px;">Inicia sesion con Microsoft</button>
+                    </div>
+
+                    
+                </div>
+
+            </div>
+
+
+            <form id="login-form"><!--6LdletYqAAAAAN1Insg4lQuDyDO8zO834KBO6nvs-->
+                <div class="g-recaptcha" style="padding-left: 23%;" data-sitekey="6LeeFo4qAAAAAFIb0Wb5mRE0KWPwaU7xmNEuPfWE"></div>
+                
+            </form>
 
 
         </div>

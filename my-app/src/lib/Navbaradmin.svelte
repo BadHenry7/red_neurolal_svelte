@@ -10,6 +10,23 @@ var henry=true
 
 
 onMount(async() => {
+
+  let cookies = document.cookie
+        .split("; ")
+        .find(row => row.startsWith("sesionGoogle="));
+
+    if (cookies) {
+        let sesionGoogleRaw = cookies.split("=")[1];
+        let sesionGoogle = JSON.parse(decodeURIComponent(sesionGoogleRaw));
+        console.log("Sesión decodificada:", sesionGoogle);
+        let miStorage = window.localStorage;
+        let name = sesionGoogle.nombre;
+        let id = sesionGoogle.id;
+        let correo = sesionGoogle.email;
+        let encontrado = { name, id, correo};
+        miStorage.setItem("usuario", JSON.stringify(encontrado));
+    } 
+  
     let miStorage = window.localStorage;
     let usuario = JSON.parse(miStorage.getItem('usuario'));
     let n=usuario.name;
@@ -33,6 +50,14 @@ onMount(async() => {
 
 });
 
+function borrarCookies() {
+    document.cookie.split(";").forEach((c) => {
+        document.cookie = c
+            .replace(/^ +/, "") // Elimina espacios en blanco al inicio
+            .replace(/=.*/, "=;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/"); // Expira la cookie
+    });
+}
+
 function confirmacion() {
         Swal.fire({
       title: "¿Estas seguro?",
@@ -45,6 +70,8 @@ function confirmacion() {
     }).then((result) => {
       if (result.isConfirmed) {
         localStorage.clear();
+        borrarCookies()
+
         window.location.href = "/";
       }
     });
@@ -70,7 +97,7 @@ async function showModal() {
         
         try {
             console.log("entra al try");
-            const response = await fetch("https://red-neuronal-api.onrender.com/get_user", {
+            const response = await fetch("http://127.0.0.1:8000/get_user", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -143,7 +170,7 @@ async function editar() {
   let  v_documento =document.getElementById("nav_documento").value;
   let v_telefono  =document.getElementById("nav_telefono").value;
   console.log(v_password)
-  const response = await fetch("https://red-neuronal-api.onrender.com/update_adm", {
+  const response = await fetch("http://127.0.0.1:8000/update_adm", {
           method: "PUT",
           headers: {
               "Content-Type": "application/json",
