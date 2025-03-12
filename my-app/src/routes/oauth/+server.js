@@ -1,6 +1,11 @@
 import { redirect, json } from '@sveltejs/kit';
 import { OAuth2Client } from 'google-auth-library';
-import {SECRET_CLIENT_ID,SECRET_CLIENT_SECRET} from '$env/static/private';
+//import {SECRET_CLIENT_ID,SECRET_CLIENT_SECRET} from '$env/static/private';
+const SECRET_CLIENT_ID = process.env.SECRET_CLIENT_ID;
+const SECRET_CLIENT_SECRET = process.env.SECRET_CLIENT_SECRET;
+console.log("CLIENT_ID:", SECRET_CLIENT_ID);
+console.log("CLIENT_SECRET:", SECRET_CLIENT_SECRET);
+
 import { onMount } from "svelte";
 
 
