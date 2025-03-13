@@ -110,7 +110,7 @@
         
         try {
             console.log("entra al try");
-            const response = await fetch("http://127.0.0.1:8000/get_user", {
+            const response = await fetch("https://red-neuronal-api.onrender.com/get_user", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

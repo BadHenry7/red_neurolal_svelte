@@ -72,7 +72,7 @@ href="https://cdn.jsdelivr.net/npm/@coreui/coreui-pro@5.10.0/dist/css/coreui.min
                 console.log(n);
 
                 const response = await fetch(
-                    "http://127.0.0.1:8000/reportes_citas/",
+                    "https://red-neuronal-api.onrender.com/reportes_citas/",
                     {
                         method: "POST",
                         headers: {
@@ -150,7 +150,7 @@ href="https://cdn.jsdelivr.net/npm/@coreui/coreui-pro@5.10.0/dist/css/coreui.min
                 console.log(fecha_de);
                 console.log(fecha_hasta);
                 const response = await fetch(
-                    "http://127.0.0.1:8000/reportes_diagnosticos/",
+                    "https://red-neuronal-api.onrender.com/reportes_diagnosticos/",
                     {
                         method: "POST",
                         headers: {
@@ -229,7 +229,7 @@ href="https://cdn.jsdelivr.net/npm/@coreui/coreui-pro@5.10.0/dist/css/coreui.min
                 console.log(fecha_de);
                 console.log(fecha_hasta);
                 const response = await fetch(
-                    "http://127.0.0.1:8000/reportes_historial/",
+                    "https://red-neuronal-api.onrender.com/reportes_historial/",
                     {
                         method: "POST",
                         headers: {
@@ -346,7 +346,7 @@ let loading_select=false
     async function select_doctor() {
         try{
             
-            const response = await fetch("http://127.0.0.1:8000/getmedico")
+            const response = await fetch("https://red-neuronal-api.onrender.com/getmedico")
             const data = await response.json();
             doctores = data.resultado;
             console.log("eu",doctores);
@@ -457,7 +457,7 @@ function formatDate(date) {
                     console.log(n);
 
                     const response = await fetch(
-                        "http://127.0.0.1:8000/reportes_citas/",
+                        "https://red-neuronal-api.onrender.com/reportes_citas/",
                         {
                             method: "POST",
                             headers: {
@@ -547,7 +547,7 @@ function formatDate(date) {
         
         try {
             console.log("entra a la API");
-        const response = await fetch("http://127.0.0.1:8000/reportes_diagnosticos/", {
+        const response = await fetch("https://red-neuronal-api.onrender.com/reportes_diagnosticos/", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ fecha: fecha_desde, fecha2: fecha_hasta }),
@@ -626,7 +626,7 @@ function formatDate(date) {
 
         try {
             console.log("entra a la API");
-        const response = await fetch("http://127.0.0.1:8000/reportes_historial/", {
+        const response = await fetch("https://red-neuronal-api.onrender.com/reportes_historial/", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ fecha: fecha_desde, fecha2: fecha_hasta }),
@@ -716,7 +716,7 @@ function formatDate(date) {
 
     try {
         console.log("entra a la API");
-      const response = await fetch("http://127.0.0.1:8000/reportes_historial/", {
+      const response = await fetch("https://red-neuronal-api.onrender.com/reportes_historial/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ fecha: fecha_desde, fecha2: fecha_hasta }),
