@@ -487,7 +487,7 @@
         </div>        
 
         <button on:click={generar} class="btn btn-success mt-3">Generar</button>
-        <button class="btn btn-secondary mt-2">Enviar correo</button>
+        <button on:click={showModal} class="btn btn-secondary mt-2">Enviar correo</button>
     </div>
 
     <!-- Contenedor del PDF alineado a la derecha -->
