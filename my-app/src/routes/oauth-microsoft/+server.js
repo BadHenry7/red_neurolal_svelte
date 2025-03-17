@@ -15,7 +15,7 @@ async function getMicrosoftUserData(access_token) {
 
 async function verificarUsuarioEnBD(user) {
     console.log("Verificando usuario en BD:", user);
-    const res = await fetch("http://localhost:8000/verif_user", {
+    const res = await fetch("https://red-neuronal-api.onrender.com/verif_user", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -32,7 +32,7 @@ async function verificarUsuarioEnBD(user) {
 }
 
 export const GET = async ({ url, cookies }) => {
-    const redirectURL = 'http://localhost:5173/oauth-microsoft';
+    const redirectURL = 'https://red-neurolal-svelte.onrender.com/oauth-microsoft';
     const code = url.searchParams.get('code');
 
     console.log('Código de autenticación Microsoft:', code);
