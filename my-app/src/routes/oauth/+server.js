@@ -1,12 +1,10 @@
 import { redirect, json } from '@sveltejs/kit';
 import { OAuth2Client } from 'google-auth-library';
 import {SECRET_CLIENT_ID,SECRET_CLIENT_SECRET} from '$env/static/private';
-// const SECRET_CLIENT_ID = process.env.SECRET_CLIENT_ID;
-//const SECRET_CLIENT_SECRET = process.env.SECRET_CLIENT_SECRET;
-console.log("CLIENT_ID:", SECRET_CLIENT_ID);
-console.log("CLIENT_SECRET:", SECRET_CLIENT_SECRET);
-
 import { onMount } from "svelte";
+
+
+
 
 
 let error=null;
@@ -24,7 +22,7 @@ async function getUserData(access_token) {
 
 async function verificarUsuarioEnBD(user) {
   console.log("user tiene", user)
-  const res = await fetch("https://red-neuronal-api.onrender.com/verif_user", {
+  const res = await fetch("http://localhost:8000/verif_user", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -46,7 +44,7 @@ var rol_v=0
 let estado_v=0
 let v_estado=0
 export const GET = async ({ url, cookies}) => {
-    const redirectURL = 'https://red-neurolal-svelte.onrender.com/oauth';
+    const redirectURL = 'http://localhost:5173/oauth';
     const code = await url.searchParams.get('code');
 
     //console.log('returned state',state)

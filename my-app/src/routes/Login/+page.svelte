@@ -2,7 +2,7 @@
     import { onMount } from "svelte";
   import { token_obtener } from '$lib';
     let todos = {};
-    let todos2 = {};
+    var todos2 = {};
 
     let loading = false;
     let error = null;
@@ -13,7 +13,7 @@
     /*
     onMount(async () => {
         try {
-            const response = await fetch("https://red-neuronal-api.onrender.com/login");
+            const response = await fetch("http://127.0.0.1:8000/login");
             if (!response.ok) throw new Error("Error al cargar los datos");
             todos = await response.json();
         } catch (e) {
@@ -65,7 +65,7 @@ async function token(event) {
         console.log(todos2);
         loading = true;
         try {
-            const response = await fetch("https://red-neuronal-api.onrender.com/login", {
+            const response = await fetch("http://127.0.0.1:8000/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -293,6 +293,7 @@ async function token(event) {
 
                         <button class="form-control btn" type="submit">Inicia sesion con Google</button>
                         </form>    
+                        
                     </div>
                 </div>
                 <div class="col-sm-2 col-md-3 col-xl-6 col-lg-3 col-2">
@@ -301,7 +302,9 @@ async function token(event) {
                             <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" width="24">
 
                         </span>
+                        <form method="post" action="?/OAuth2Microsoft">
                         <button class="form-control"  style="font-size: 14px;">Inicia sesion con Microsoft</button>
+                        </form>
                     </div>
 
                     
