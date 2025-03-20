@@ -10,7 +10,7 @@
     // Cargar los síntomas al montar el componente
     onMount(async () => {
         try {
-            const res = await fetch("https://red-neuronal-api.onrender.com/sintomas");
+            const res = await fetch("http://127.0.0.1:8000/sintomas");
             const data = await res.json();
             sintomas = [...data.sintomas]; // SOLUCIÓN: Forzar actualización en Svelte
         } catch (error) {
@@ -24,7 +24,7 @@
 
     async function predecir() {
         try {
-            const res = await fetch("https://red-neuronal-api.onrender.com/predict", {
+            const res = await fetch("http://127.0.0.1:8000/predict", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ selected_symptoms: seleccionados }),
@@ -121,7 +121,7 @@
     }
 
     .sintomas-list {
-        max-height: 300px;
+        max-height: 500px;
         overflow-y: auto;
         padding: 5px;
     }
@@ -193,7 +193,7 @@
   // Cargar los síntomas al montar el componente
   onMount(async () => {
       try {
-          const res = await fetch("https://red-neuronal-api.onrender.com/sintomas");
+          const res = await fetch("http://127.0.0.1:8000/sintomas");
           const data = await res.json();
           sintomas = data.sintomas;
       } catch (error) {
@@ -208,7 +208,7 @@
   async function predecir() {
       try {
           console.log(seleccionados)
-          const res = await fetch("https://red-neuronal-api.onrender.com/predict", {
+          const res = await fetch("http://127.0.0.1:8000/predict", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({ selected_symptoms: seleccionados }),
