@@ -22,6 +22,16 @@
         Swal.fire("Su enfermedad es " + enfermedad);
     }
 
+    function manejarCambioCheckbox(e, sintoma) {
+    if (e.target.checked) {
+        if (!seleccionados.includes(sintoma)) {
+            seleccionados = [...seleccionados, sintoma];
+        }
+    } else {
+        quitarSintoma(sintoma);
+    }
+}
+
     async function predecir() {
         try {
             const res = await fetch("https://red-neuronal-api.onrender.com/predict", {
@@ -66,7 +76,12 @@
                 {#if sintomasFiltrados.length > 0}
                     {#each sintomasFiltrados as sintoma}
                         <label class="sintoma-item">
-                            <input type="checkbox" value={sintoma} bind:group={seleccionados} />
+                            <input
+                            type="checkbox"
+                            value={sintoma}
+                            checked={seleccionados.includes(sintoma)}
+                            on:change={(e) => manejarCambioCheckbox(e, sintoma)}
+                        />
                             {sintoma}
                         </label>
                     {/each}
