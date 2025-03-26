@@ -77,7 +77,7 @@
             }
 
         
-                const response = await fetch("https://red-neuronal-api.onrender.com/create_user", {
+                const response = await fetch("http://127.0.0.1:8000/create_user", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -161,7 +161,7 @@ Junto con d-none, esto hace que el div esté oculto en móviles pero visible en 
         <!-- Sección del formulario -->
         <div class="col-md-6 d-flex align-items-center justify-content-center">
             <div class="w-75">
-                <h2 class="text-center fw-bold mb-4">Registro de Paciente</h2>
+                <h2 class="text-center fw-bold mb-4">Registro de paciente</h2>
 
                 <form name="formulario" id="formulario" class="container" on:submit={Register}>
                     <div class="mb-3">
@@ -412,7 +412,7 @@ Junto con d-none, esto hace que el div esté oculto en móviles pero visible en 
             return;
         }
 
-            const response = await fetch("https://red-neuronal-api.onrender.com/create_user", {
+            const response = await fetch("http://127.0.0.1:8000/create_user", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

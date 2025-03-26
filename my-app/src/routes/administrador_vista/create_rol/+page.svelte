@@ -16,8 +16,8 @@
 
   onMount(async () => {
     try {
-      const response = await fetch("https://red-neuronal-api.onrender.com/get_modulos");
-      const response_roles = await fetch("https://red-neuronal-api.onrender.com/get_roles");
+      const response = await fetch("http://127.0.0.1:8000/get_modulos");
+      const response_roles = await fetch("http://127.0.0.1:8000/get_roles");
 
       if (!response.ok) throw new Error("Error al cargar los datos");
      const data = await response.json();
@@ -60,7 +60,7 @@
     try {
       console.log("sssssss");
 
-      const response = await fetch("https://red-neuronal-api.onrender.com/create_rol",{
+      const response = await fetch("http://127.0.0.1:8000/create_rol",{
 
         method: "POST",
         headers: {
@@ -103,7 +103,7 @@
 
     console.log("Entramos al try de modulos asignados")
     try {
-      const response = await fetch("https://red-neuronal-api.onrender.com/get_modulos_asignado",{
+      const response = await fetch("http://127.0.0.1:8000/get_modulos_asignado",{
       method: "POST",
       headers: {
         "Content-Type": "application/json", },
@@ -132,7 +132,7 @@
 
 
 
-    const result = await fetch("https://red-neuronal-api.onrender.com/get_mxp_id",{
+    const result = await fetch("http://127.0.0.1:8000/get_mxp_id",{
       method: "POST",
       headers: {
         "Content-Type": "application/json", },
@@ -178,7 +178,7 @@
       console.log("id del rol que fue creado:",v_id_rol)
       console.log("modulos seleccionados",seleccionados)
 
-      const response = await fetch("https://red-neuronal-api.onrender.com/create_moduloxperfil",{
+      const response = await fetch("http://127.0.0.1:8000/create_moduloxperfil",{
 
         method: "POST",
         headers: {
@@ -241,7 +241,7 @@
       console.log(seleccionados)
 
       
-      const response = await fetch ('https://red-neuronal-api.onrender.com/update_modulo_seleccionado',{
+      const response = await fetch ('http://127.0.0.1:8000/update_modulo_seleccionado',{
 
       method: 'PUT',
       headers:{ "Content-Type": "application/json",},
@@ -315,7 +315,7 @@ let loading_estado=true
 
 
 <div class="card-body container"> 
-  <div class="container text-center"><b class="fs-4">¡Creacion de roles!</b></div>
+  <div class="container text-center"><b class="fs-4">Creación de roles!</b></div>
 
   <div class="row">
     <div class="col-xl-6">
@@ -323,7 +323,7 @@ let loading_estado=true
       <input type="text" id="name_m" class="form-control" />
     </div>
     <div class="col-xl-6">
-      <label for="" >Descripcion</label>
+      <label for="" >Descripción</label>
       <input type="text" id="descripcion" class="form-control" />
     </div>
   </div>
@@ -442,7 +442,7 @@ let loading_estado=true
           <thead>
             <tr class="bg-primary text-white">
               <th class="py-2 border">Nombre</th>
-              <th class="py-2 border">descripcion</th>
+              <th class="py-2 border">descripción</th>
               <th class="py-2 border">Estado</th>
               <th class="py-2 border">Opcion</th>
             </tr>
@@ -499,7 +499,7 @@ let loading_estado=true
             </div>
 
             <div class="col-lx-4">
-              <label for="">Descripcion:</label>
+              <label for="">Descripción:</label>
               <input type="text" id="descrition"   class="form-control">
             </div>
 

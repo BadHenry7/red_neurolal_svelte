@@ -103,7 +103,7 @@ async function showModal() {
         
         try {
             console.log("entra al try");
-            const response = await fetch("https://red-neuronal-api.onrender.com/get_user", {
+            const response = await fetch("http://127.0.0.1:8000/get_user", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -176,7 +176,7 @@ async function editar() {
   let  v_documento =document.getElementById("nav_documento").value;
   let v_telefono  =document.getElementById("nav_telefono").value;
   console.log(v_password)
-  const response = await fetch("https://red-neuronal-api.onrender.com/update_adm", {
+  const response = await fetch("http://127.0.0.1:8000/update_adm", {
           method: "PUT",
           headers: {
               "Content-Type": "application/json",
@@ -295,7 +295,8 @@ async function editar() {
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="/botci">Botci :D</a>
+            <a class="nav-link " href="/botci">SmartBot IA🤖</a>
+
           </li>
 
         </ul>
@@ -375,8 +376,12 @@ async function editar() {
 
 
                 <div class="col-md-6">
+                  {#if image}
                   <img src={image} alt="Hospital" class="img-fluid w-100 h-100" style="object-fit: cover;">
-                  
+                  {:else}
+                  <img src={"/image.png"} alt="Hospital" class="img-fluid w-100 h-100" style="object-fit: cover;">
+
+                  {/if}
                 </div>
              </div>
 

@@ -102,7 +102,7 @@ const modalElement = document.getElementById("perfil_modal");
   
   try {
       console.log("entra al try");
-      const response = await fetch("https://red-neuronal-api.onrender.com/get_user", {
+      const response = await fetch("http://127.0.0.1:8000/get_user", {
           method: "POST",
           headers: {
               "Content-Type": "application/json",
@@ -151,7 +151,7 @@ const modalElement = document.getElementById("perfil_modal");
               <a class="nav-link" href="/medico_vista/reporte_medico">Reportes</a><!---->
             </li>
             <li class="nav-item mx-4">
-              <a class="nav-link " href="/botci">Botci</a>
+              <a class="nav-link " href="/botci">SmartBot IA🤖</a>
             </li>
             <!--<li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
