@@ -18,7 +18,7 @@
 
     async function generarPDF() {
         try {
-            const response = await fetch("http://127.0.0.1:8000/incapacidad_medica", {
+            const response = await fetch("https://red-neuronal-api.onrender.com/incapacidad_medica", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
