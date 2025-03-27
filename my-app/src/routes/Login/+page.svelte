@@ -425,6 +425,11 @@ async function token(event) {
         background-color: #1bd1d1; /* Color de fondo al pasar el mouse */
     }
 
+    .btn_login:hover {
+        background-color: rgb(27, 27, 27);
+        transition: all 0.4s ease; /* Añadir transición para suavizar el movimiento */
+    }
+
     @media (max-width: 768px) {
         .col-md-4 {
             width: 100%; /* Hace que los inputs ocupen el 100% en pantallas pequeÃ±as */
