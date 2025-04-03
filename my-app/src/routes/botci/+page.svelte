@@ -6,11 +6,11 @@
     let seleccionados = []; // Lista de síntomas seleccionados
     let enfermedad = null; // Resultado de la predicción
     let filtro = ""; // Para la búsqueda en tiempo real
-
+    let probabilidad=null;
     // Cargar los síntomas al montar el componente
     onMount(async () => {
         try {
-            const res = await fetch("https://red-neuronal-api.onrender.com/sintomas");
+            const res = await fetch("https://red-neuronal-api.onrender.com/sintomas/sintomas");
             const data = await res.json();
             sintomas = [...data.sintomas]; // SOLUCIÓN: Forzar actualización en Svelte
         } catch (error) {
@@ -19,7 +19,7 @@
     });
 
     function mostrar() {
-        Swal.fire("Su enfermedad es " + enfermedad);
+        Swal.fire("Su enfermedad es " + enfermedad+" con una probabilidad de "+probabilidad);
     }
 
     function manejarCambioCheckbox(e, sintoma) {
@@ -34,13 +34,14 @@
 
     async function predecir() {
         try {
-            const res = await fetch("https://red-neuronal-api.onrender.com/predict", {
+            const res = await fetch("https://red-neuronal-api.onrender.com/sintomas/predict", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ selected_symptoms: seleccionados }),
             });
             const data = await res.json();
             enfermedad = data.enfermedad;
+            probabilidad= data.probabilidad;
             mostrar();
         } catch (error) {
             console.error("Error al predecir la enfermedad:", error);
@@ -208,7 +209,7 @@
   // Cargar los síntomas al montar el componente
   onMount(async () => {
       try {
-          const res = await fetch("https://red-neuronal-api.onrender.com/sintomas");
+          const res = await fetch("https://red-neuronal-api.onrender.com/sintomas/sintomas");
           const data = await res.json();
           sintomas = data.sintomas;
       } catch (error) {
@@ -223,7 +224,7 @@
   async function predecir() {
       try {
           console.log(seleccionados)
-          const res = await fetch("https://red-neuronal-api.onrender.com/predict", {
+          const res = await fetch("https://red-neuronal-api.onrender.com/sintomas/predict", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({ selected_symptoms: seleccionados }),
