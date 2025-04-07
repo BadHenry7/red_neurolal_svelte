@@ -5,8 +5,12 @@
     let todos2 = {};
     let loading = true;
     let error = null;
+    let visualizar=null
+    let pdfUrl = "";
+
    
     async function Generar() {
+        visualizar = true
         let opcion = document.getElementById("opcion").value;
         let miStorage = window.localStorage;
         let usuario = JSON.parse(miStorage.getItem("usuario"));
@@ -20,7 +24,7 @@
         try {
             if (opcion == 1) {
                 const response = await fetch(
-                    "https://red-neuronal-api.onrender.com/historia_clinica_user",
+                    "https://red-neurolal-svelte.onrender.com/historia_clinica_user",
                     {
                         method: "POST",
                         headers: {
@@ -114,13 +118,17 @@
 
                 doc.text("Derechos reservados", 105, 280, { align: "center" });
 
-                doc.save("Ultima_cita_Medica.pdf");
-                //doc.save("Cita_usuario.pdf");
+                //modal de previsualizacion de pdf
+                const pdfBlob = doc.output("blob");
+                pdfUrl = URL.createObjectURL(pdfBlob);
+
+                document.getElementById("pdfvista").src = pdfUrl;
+                
                 const Toast = Swal.mixin({
                     toast: true,
-                    position: "bottom-end",
+                    position: "bottom-start",
                     showConfirmButton: false,
-                    timer: 4000,
+                    timer: 1500,
                     timerProgressBar: true,
                     didOpen: (toast) => {
                         toast.onmouseenter = Swal.stopTimer;
@@ -134,7 +142,7 @@
 
             } else if (opcion == 2) {
                 const response = await fetch(
-                    "https://red-neuronal-api.onrender.com/post_citas_users/",
+                    "https://red-neurolal-svelte.onrender.com/post_citas_users/",
                     {
                         method: "POST",
                         headers: {
@@ -171,14 +179,30 @@
                 doc.setFontSize(18);
                 doc.text(12, 40, "Las citas medicas pendientes que tienes son");
                 var columns = ["fecha", "hora", "medico"];
-                doc.autoTable(columns, body, { margin: { top: 70 } });
+                doc.autoTable({
+                startY: 50,
+                head: [['Fecha', 'Hora', 'Médico']], // Encabezados
+                body: body, // Tu array de arrays con datos
+                margin: { top: 70 },
+                styles: { fontSize: 10, cellPadding: 2 },
+                columnStyles: {
+                    0: { cellWidth: 40 }, 
+                    1: { cellWidth: 30 }, 
+                    2: { cellWidth: 60 }, 
+                },
+                theme: 'grid'
+                });
+                //modal de previsualizacion de pdf
+                const pdfBlob = doc.output("blob");
+                pdfUrl = URL.createObjectURL(pdfBlob);
 
-                doc.save("Cita_usuario.pdf");
+                document.getElementById("pdfvista").src = pdfUrl;
+                
                 const Toast = Swal.mixin({
                     toast: true,
-                    position: "bottom-end",
+                    position: "bottom-start",
                     showConfirmButton: false,
-                    timer: 3000,
+                    timer: 1500,
                     timerProgressBar: true,
                     didOpen: (toast) => {
                         toast.onmouseenter = Swal.stopTimer;
@@ -202,7 +226,47 @@
 
 <Navbarusuario></Navbarusuario>
 
-<div class="container">
+<div class="container d-flex justify-content-between mt-3">
+    <!-- Tarjeta de Reportes -->
+    <div class="card shadow-lg p-4" style="width: 500px; height: 250px;background: #f0f4f8; border-radius: 12px;">
+        <h3 class="text-center mb-4 text-danger">Reportes</h3>
+
+        <select class="form-select mb-3" id="opcion" required>
+            <option value="1">Ultima cita medica</option>
+            <option value="2">Citas agendadas</option>
+        </select>
+       
+
+        <button on:click={Generar} class="btn btn-success mt-3">Generar</button>
+    </div>
+
+    <!-- Contenedor del PDF alineado a la derecha -->
+     {#if visualizar}
+    <div id="pdfContainer" class="ms-4">
+        <iframe title="pdf" id="pdfvista" style="width: 800px; height: 600px;"></iframe>
+    </div>
+    {:else}
+    <div class="">
+        <div class="card shadow-lg border-0 ms-4 " style="width: 800px; height: 600px;">
+          <div class="card-body">
+            <h3 class="text-center text-primary fw-bold">Vista previa de documentos PDF</h3>
+            <p class="text-secondary mt-3" style="text-align: justify; line-height: 1.6;">
+              Aquí podrás visualizar tus archivos PDF antes de proceder con la descarga. Esta función te permitirá revisar cada detalle del documento para asegurarte de que toda la información es correcta y está bien organizada.  
+              <br /><br />
+              Antes de descargarlo, puedes verificar nombres, fechas, contenido y cualquier otro dato relevante.
+              <br /><br />  
+              Una vez estés seguro de que todo está en orden, podrás proceder a la descarga del PDF con total confianza. 
+            </p>
+          </div>
+        </div>
+      </div>
+      
+    {/if}
+
+</div>
+
+
+<!-- <div class="container">
     <div>
         <div class="text-center">
             <div class="pt-2 mt-1">
@@ -220,4 +284,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
