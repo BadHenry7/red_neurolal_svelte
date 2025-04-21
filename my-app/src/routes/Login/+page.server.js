@@ -7,7 +7,7 @@ console.log("verificando")
 
 export const actions = {
     OAuth2: async({})=>{
-        const redirectURL = 'https://red-neurolal-svelte.onrender.com/oauth';
+        const redirectURL = 'https://red-neuronal-api.onrender.com/oauth';
 
         console.log('id',SECRET_CLIENT_ID)
 
@@ -33,7 +33,7 @@ export const actions = {
 
         console.log(MICROSOFT_CLIENT_ID)
         console.log(MICROSOFT_CLIENT_SECRET)
-      const redirectURL = 'https://red-neurolal-svelte.onrender.com/oauth-microsoft';
+      const redirectURL = 'https://red-neuronal-api.onrender.com/oauth-microsoft';
 
       const authorizeUrl = `https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=${MICROSOFT_CLIENT_ID}&response_type=code&redirect_uri=${redirectURL}&scope=openid email profile User.Read&response_mode=query&prompt=consent`;
 

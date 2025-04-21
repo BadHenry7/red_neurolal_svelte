@@ -24,7 +24,7 @@
         try {
             if (opcion == 1) {
                 const response = await fetch(
-                    "https://red-neurolal-svelte.onrender.com/historia_clinica_user",
+                    "https://red-neuronal-api.onrender.com/historia_clinica_user",
                     {
                         method: "POST",
                         headers: {
@@ -142,7 +142,7 @@
 
             } else if (opcion == 2) {
                 const response = await fetch(
-                    "https://red-neurolal-svelte.onrender.com/post_citas_users/",
+                    "https://red-neuronal-api.onrender.com/post_citas_users/",
                     {
                         method: "POST",
                         headers: {

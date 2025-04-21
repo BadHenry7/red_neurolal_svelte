@@ -10,7 +10,7 @@
     // Cargar los síntomas al montar el componente
     onMount(async () => {
         try {
-            const res = await fetch("https://red-neurolal-svelte.onrender.com/sintomas");
+            const res = await fetch("https://red-neuronal-api.onrender.com/sintomas");
             const data = await res.json();
             sintomas = [...data.sintomas]; // SOLUCIÓN: Forzar actualización en Svelte
         } catch (error) {
@@ -34,7 +34,7 @@
 
     async function predecir() {
         try {
-            const res = await fetch("https://red-neurolal-svelte.onrender.com/predict", {
+            const res = await fetch("https://red-neuronal-api.onrender.com/predict", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ selected_symptoms: seleccionados }),
@@ -209,7 +209,7 @@
   // Cargar los síntomas al montar el componente
   onMount(async () => {
       try {
-          const res = await fetch("https://red-neurolal-svelte.onrender.com/sintomas");
+          const res = await fetch("https://red-neuronal-api.onrender.com/sintomas");
           const data = await res.json();
           sintomas = data.sintomas;
       } catch (error) {
@@ -224,7 +224,7 @@
   async function predecir() {
       try {
           console.log(seleccionados)
-          const res = await fetch("https://red-neurolal-svelte.onrender.com/predict", {
+          const res = await fetch("https://red-neuronal-api.onrender.com/predict", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({ selected_symptoms: seleccionados }),

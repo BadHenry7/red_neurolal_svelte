@@ -32,7 +32,7 @@ async function verificarUsuarioEnBD(user) {
 }
 
 export const GET = async ({ url, cookies }) => {
-    const redirectURL = 'https://red-neurolal-svelte.onrender.com/oauth-microsoft';
+    const redirectURL = 'https://red-neuronal-api.onrender.com/oauth-microsoft';
     const code = url.searchParams.get('code');
 
     console.log('Código de autenticación Microsoft:', code);
