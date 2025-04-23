@@ -9,7 +9,7 @@
   onMount(async () => {
     try {
       console.log("2");
-      const response = await fetch("https://red-neuronal-api.onrender.com/get_users");
+      const response = await fetch("http://127.0.0.1:8000/get_users");
       if (!response.ok) throw new Error("Error al cargar los datos");
       const data = await response.json();
       todos = data.resultado;
@@ -20,7 +20,8 @@
         globalThis.$("#myTable").DataTable({
           stripeClasses: ["bg-white", "bg-light"], 
           language: {
-            url: "//cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json",}
+            url: "//cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json",},
+            order: []
         }); // Para convertrlo en datatable :D
       }, 0);
     } catch (e) {
@@ -67,7 +68,7 @@
     try {
       console.log("Entra al try de buscar");
 
-      const response = await fetch("https://red-neuronal-api.onrender.com/get_user", {
+      const response = await fetch("http://127.0.0.1:8000/get_user", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -103,7 +104,7 @@
       selectRol.appendChild(defaultOption);
 
 
-      const roless = await fetch ("https://red-neuronal-api.onrender.com/roles_get",{
+      const roless = await fetch ("http://127.0.0.1:8000/roles_get",{
         method:"GET",
         headers: { "Content-Type": "application/json" },
       });
@@ -166,7 +167,7 @@
     try {
       console.log("Entra al try de actualzar");
 
-      const response = await fetch("https://red-neuronal-api.onrender.com/actualizaruser", {
+      const response = await fetch("http://127.0.0.1:8000/actualizaruser", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -222,7 +223,7 @@
     let vid = id;
     console.log("Correo" + usuario);
     try {
-      const response = await fetch("https://red-neuronal-api.onrender.com/estado_user", {
+      const response = await fetch("http://127.0.0.1:8000/estado_user", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -286,7 +287,7 @@
     let vid = id;
 
     try {
-      const response = await fetch("https://red-neuronal-api.onrender.com/estado_user", {
+      const response = await fetch("http://127.0.0.1:8000/estado_user", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

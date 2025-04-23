@@ -10,7 +10,7 @@
     // Cargar los síntomas al montar el componente
     onMount(async () => {
         try {
-            const res = await fetch("https://red-neuronal-api.onrender.com/sintomas");
+            const res = await fetch("http://127.0.0.1:8000/sintomas");
             const data = await res.json();
             sintomas = [...data.sintomas]; // SOLUCIÓN: Forzar actualización en Svelte
         } catch (error) {
@@ -27,6 +27,7 @@
         if (!seleccionados.includes(sintoma)) {
             seleccionados = [...seleccionados, sintoma];
         }
+       
     } else {
         quitarSintoma(sintoma);
     }
@@ -34,7 +35,16 @@
 
     async function predecir() {
         try {
-            const res = await fetch("https://red-neuronal-api.onrender.com/predict", {
+            if (seleccionados.length<=3){
+                Swal.fire({
+                    title: "Error!",
+                    text: "Por favor seleccione mas de 3 sintomas",
+                    icon: "info",
+                    confirmButtonText: "Cool",
+                });
+            return
+        }
+            const res = await fetch("http://127.0.0.1:8000/predict", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ selected_symptoms: seleccionados }),
@@ -104,7 +114,7 @@
                 {/each}
             </ul>
 
-            <button type="button" class="btn" on:click={predecir} disabled={seleccionados.length === 0}>
+            <button type="button" class="btn" on:click={predecir} disabled={seleccionados.length ===0}>
                 Predecir
             </button>
         </div>
@@ -209,7 +219,7 @@
   // Cargar los síntomas al montar el componente
   onMount(async () => {
       try {
-          const res = await fetch("https://red-neuronal-api.onrender.com/sintomas");
+          const res = await fetch("http://127.0.0.1:8000/sintomas");
           const data = await res.json();
           sintomas = data.sintomas;
       } catch (error) {
@@ -224,7 +234,7 @@
   async function predecir() {
       try {
           console.log(seleccionados)
-          const res = await fetch("https://red-neuronal-api.onrender.com/predict", {
+          const res = await fetch("http://127.0.0.1:8000/predict", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({ selected_symptoms: seleccionados }),

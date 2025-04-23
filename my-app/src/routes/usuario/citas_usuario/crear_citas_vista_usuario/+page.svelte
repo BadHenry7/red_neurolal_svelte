@@ -11,13 +11,7 @@
     const templateID = 'template_i73qkfa'
     const apikey = 'gVmq9ZyZNWP2_LzXW'
 
-    let date = new Date();
-    let  horas= date.getHours()
-    if (horas<10){
-    console.log("entro",horas)
-
-        horas= "0"+horas
-    }
+   
 
 
     onMount(async () => {
@@ -30,7 +24,7 @@
             console.log("agendamos cita");
             console.log(n);
 
-            const response = await fetch("https://red-neuronal-api.onrender.com/post_citas_users/", {
+            const response = await fetch("http://127.0.0.1:8000/post_citas_users/", {
                 
                 method: "POST",
                 headers: {
@@ -69,7 +63,7 @@
 
 
         try {
-            const response = await fetch("https://red-neuronal-api.onrender.com/getmedico");
+            const response = await fetch("http://127.0.0.1:8000/getmedico");
             if (!response.ok) throw new Error("Error al cargar los datos");
             const data = await response.json();
             todos = data.resultado;
@@ -128,9 +122,34 @@
 
     });
 
+    let date = new Date();
+    let  horas= date.getHours()
+    if (horas<10){
+    console.log("entro",horas)
+
+        horas= "0"+horas
+    }
 
     let v_horas= horas+":00"
     console.log("acacac",v_horas)
+
+
+//-----------------------------------------------------
+//Calculo de fecha:
+const year = date.getFullYear();
+let month = date.getMonth() + 1;  
+let day = date.getDate();
+month = month < 10 ? '0' + month : month;
+day = day < 10 ? '0' + day : day;
+
+date= year + '-' + month + '-' + day;
+
+//-----------------------------------------------------
+
+
+
+    console.log("esto imprine la fecha", date)
+
     
 
     let hours=["06:30", "07:00", "07:30", "08:00","08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", 
@@ -145,8 +164,17 @@
 
     function mostrar_fecha() {
         
+        
+
         console.log("entro a mostrar fecha")
         const vfecha = document.getElementById("c_m_d").value;
+
+        if (vfecha>date){
+            v_horas="05:00"
+        }else{
+            v_horas=horas+":00"
+        }
+
     
         //medico
         const vmedico = document.getElementById("medico");
@@ -237,7 +265,7 @@
 
         try {
             const response = await fetch(
-                "https://red-neuronal-api.onrender.com/create_cita/",
+                "http://127.0.0.1:8000/create_cita/",
                 {
                     method: "POST",
                     headers: {
