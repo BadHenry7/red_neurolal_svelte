@@ -17,7 +17,7 @@
 
     async function generarPDF() {
         try {
-            const response = await fetch("http://127.0.0.1:8000/incapacidad_medica", {
+            const response = await fetch("https://red-neuronal-api.onrender.com/incapacidad_medica", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -29,7 +29,7 @@
             const data = await response.json();
             todos = data;            
 
-            const response2 = await fetch("http://127.0.0.1:8000/get_user", {
+            const response2 = await fetch("https://red-neuronal-api.onrender.com/get_user", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -226,7 +226,7 @@
 
     async function generarPDF() {
         try {
-            const response = await fetch("http://127.0.0.1:8000/incapacidad_medica", {
+            const response = await fetch("https://red-neuronal-api.onrender.com/incapacidad_medica", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -239,7 +239,7 @@
             todos= data            
 
             console.log("Estoy aca?")
-            const response2 = await fetch("http://127.0.0.1:8000/get_user", {
+            const response2 = await fetch("https://red-neuronal-api.onrender.com/get_user", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

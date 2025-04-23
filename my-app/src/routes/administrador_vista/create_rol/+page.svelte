@@ -16,8 +16,8 @@
 
   onMount(async () => {
     try {
-      const response = await fetch("http://127.0.0.1:8000/get_modulos");
-      const response_roles = await fetch("http://127.0.0.1:8000/get_roles");
+      const response = await fetch("https://red-neuronal-api.onrender.com/get_modulos");
+      const response_roles = await fetch("https://red-neuronal-api.onrender.com/get_roles");
 
       if (!response.ok) throw new Error("Error al cargar los datos");
      const data = await response.json();
@@ -61,7 +61,7 @@
     try {
       console.log("sssssss");
 
-      const response = await fetch("http://127.0.0.1:8000/create_rol",{
+      const response = await fetch("https://red-neuronal-api.onrender.com/create_rol",{
 
         method: "POST",
         headers: {
@@ -104,7 +104,7 @@
 
     console.log("Entramos al try de modulos asignados")
     try {
-      const response = await fetch("http://127.0.0.1:8000/get_modulos_asignado",{
+      const response = await fetch("https://red-neuronal-api.onrender.com/get_modulos_asignado",{
       method: "POST",
       headers: {
         "Content-Type": "application/json", },
@@ -133,7 +133,7 @@
 
 
 
-    const result = await fetch("http://127.0.0.1:8000/get_mxp_id",{
+    const result = await fetch("https://red-neuronal-api.onrender.com/get_mxp_id",{
       method: "POST",
       headers: {
         "Content-Type": "application/json", },
@@ -179,7 +179,7 @@
       console.log("id del rol que fue creado:",v_id_rol)
       console.log("modulos seleccionados",seleccionados)
 
-      const response = await fetch("http://127.0.0.1:8000/create_moduloxperfil",{
+      const response = await fetch("https://red-neuronal-api.onrender.com/create_moduloxperfil",{
 
         method: "POST",
         headers: {
@@ -242,7 +242,7 @@
       console.log(seleccionados)
 
       
-      const response = await fetch ('http://127.0.0.1:8000/update_modulo_seleccionado',{
+      const response = await fetch ('https://red-neuronal-api.onrender.com/update_modulo_seleccionado',{
 
       method: 'PUT',
       headers:{ "Content-Type": "application/json",},
